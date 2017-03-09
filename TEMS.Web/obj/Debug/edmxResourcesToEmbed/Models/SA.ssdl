@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SpecialAcceptanceModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="SpecialAcceptanceModelStoreContainer">
+    <EntitySet Name="v_tems" EntityType="SpecialAcceptanceModel.Store.v_tems" store:Type="Views" store:Schema="dbo" store:Name="v_tems">
+      <DefiningQuery>SELECT 
+      [v_tems].[id] AS [id], 
+      [v_tems].[control_no] AS [control_no], 
+      [v_tems].[status_id] AS [status_id], 
+      [v_tems].[status_name] AS [status_name], 
+      [v_tems].[act_dt] AS [act_dt], 
+      [v_tems].[expect_date] AS [expect_date]
+      FROM [dbo].[v_tems] AS [v_tems]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'SpecialAcceptance.dbo.v_tems' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="v_tems">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="control_no" />
+      <PropertyRef Name="status_id" />
+      <PropertyRef Name="status_name" />
+      <PropertyRef Name="expect_date" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="control_no" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="status_id" Type="tinyint" Nullable="false" />
+    <Property Name="status_name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="act_dt" Type="datetime" />
+    <Property Name="expect_date" Type="date" Nullable="false" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Location Management";
+}
+
+@section scripts{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#jTableLocation').jtable({
+            title: 'Location Master',
+            paging: true, //Enable paging
+            pageSize: 10, //Set page size (default: 10)
+            sorting: true, //Enable sorting
+            selecting: true, //Enable selecting
+            defaultSorting: 'location_id ASC', //Set default sorting
+            actions: {
+                listAction: '@Url.Action("LocationList","Admin")',
+                deleteAction: '@Url.Action("DeleteLocation","Admin")',
+                updateAction: '@Url.Action("UpdateLocation","Admin")',
+                createAction: '@Url.Action("CreateLocation","Admin")'
+            },
+            fields: {
+                location_id: { title: 'ID', key: true, create: false, edit: false },
+                location_name: { title: 'Name', create: true, edit: true },
+                active: {
+                    title: 'Status', create: false, edit: true, type: 'checkbox',
+                    values: { 'false': 'Inactive', 'true': 'Active' },
+                    defaultValue: 'true'
+                },
+                update_dt: { title: 'Update', create: false, edit: false, type: 'date',displayFormat: 'dd-mm-yy' }
+            }
+        });
+        //Load student list from server
+        $('#jTableLocation').jtable('load');
+    });
+</script>
+}
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+<div id="jTableLocation"></div>

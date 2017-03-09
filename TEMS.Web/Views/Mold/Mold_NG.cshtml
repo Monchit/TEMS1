@@ -1,0 +1,95 @@
+﻿@model IEnumerable<TEMS.Web.Models.td_mold>
+@using TEMS.Web.Models;
+@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@section scripts{
+    <script type="text/javascript">
+        @*function getRefData(id, no){
+            $.get('@Url.Action("GetMoreRefData", "Mold")', { id: id, no: no },
+                function (data) {
+                    return data;
+                }
+            );
+        }*@
+        $(document).ready(function () {
+            @*$(document).tooltip({
+                items: '.tooltipUI',
+                tooltipClass: 'preview-tip',
+                position: {
+                    my: "center bottom",
+                    at: "center top"
+                },
+                content: function (callback) {
+                    var element = $(this);
+                    $.get('@Url.Action("GetMoreRefData", "Mold")', { id: element.attr("data-refid"), no: element.attr("data-refno") }, function (data) {
+                        callback(data);
+                    });
+                }
+            });*@
+        });
+    </script>
+}
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+<table class="table table-bordered table-hover">
+    @*<thead>
+        <tr>
+            <th class="text-center">Detail</th>
+            <th>Mold Code</th>
+            <th>Mold no.</th>
+            <td></td>
+            <th></th>
+        </tr>
+    </thead>*@
+    <tbody>
+        @{
+            var can_manage = Session["TEMS_GType"].ToString();
+            foreach (var item in Model)
+            {
+            <tr class="warning">
+                <td class="text-center"><a href="@Url.Action("Detail", "Mold", new { id = item.mold_code, no = item.mold_no })" role="button"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a></td>
+                <td><strong>Mold code : </strong>@item.mold_code</td>
+                <td><strong>Mold no. : </strong>@item.mold_no</td>
+                <td></td>
+                <td class="text-center">
+                    @if(can_manage == "1"){
+                    <a href="@Url.Action("Manage", "Mold", new { id = item.mold_code, no = item.mold_no })" role="button"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                    }
+                </td>
+            </tr>
+                TEMS1Entities db = new TEMS1Entities();
+                var get_ref = db.td_reference.Where(w => w.mold_code == item.mold_code && w.mold_no == item.mold_no && w.active == true);
+
+                if(get_ref.Any()){
+                    foreach (var data in get_ref)
+	                {
+		                <tr>
+                            <td></td>
+                            <td><strong>@data.tm_reference.ref_name :</strong> @data.ref_no</td>
+                            <td><strong>Entry Date :</strong> @data.entry_dt.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td>@if(data.prob_id != null){
+                                    <text><strong>Problem : </strong>@data.tm_problem.prob_name</text>   
+                                }</td>
+                            @*<td class="text-center tooltipUI" data-refid="@data.ref_id" data-refno="@data.ref_no"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span></td>*@
+                            <td id="@data.id">
+                                <script>$.get('@Url.Action("GetMoreRefData", "Mold")', { id: '@data.ref_id', no: '@data.ref_no' },
+                                        function (data) {
+                                            var id = "@data.id";
+                                            $("#" + id).html(data);
+                                        });
+                                </script>
+                            </td>
+		                </tr>
+	                }
+                }else{
+                    <tr>
+                        <td colspan="5" class="text-center txt_red">@ViewBag.NoWord</td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>

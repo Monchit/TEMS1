@@ -1,0 +1,61 @@
+﻿@model IEnumerable<TEMS.Web.Models.td_mold>
+
+<style>
+    .txt_red {
+        color: red !important;
+    }
+
+    .txt_green {
+        color: #4cff00 !important;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#tbmold').DataTable({
+            scrollY: "300px",
+            scrollX: true,
+            scrollCollapse: true,
+            paging: false,
+            fixedColumns: {
+                leftColumns: 1
+            }
+            //order: [[9, "desc"], [10, "desc"], [11, "desc"], [12, "desc"]]
+            //dom: "<ilf<t>>"
+        });
+    });
+</script>
+
+<table id="tbmold" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>Mold code</th>
+            <th>No.</th>
+            <th>Cav.</th>
+            <th>Item code</th>
+            <th>WC</th>
+            <th>Product</th>
+            <th>Plant</th>
+            <th>Location</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.mold_code</td>
+                <td>@item.mold_no</td>
+                <td>@item.cav_per_unit @item.tm_unit.unit_name</td>
+                <td>@item.item_code</td>
+                <td>@item.tm_item.tm_wc.wc_id - @item.tm_item.tm_wc.wc_name</td>
+                <td>@item.tm_item.tm_wc.tm_product.prod_id - @item.tm_item.tm_wc.tm_product.prod_name</td>
+                <td>@item.tm_item.tm_wc.tm_product.tm_plant.plant_name</td>
+                <td>@item.tm_location.location_name</td>
+                <td><span @if(item.status_id == 1){<text>class="txt_red"</text>}
+                        else if (item.status_id == 100){<text>class="txt_green"</text>}>@item.tm_status.status_name</span></td>
+                <td class="text-center"><a href="@Url.Action("Manage", "Mold", new { id = item.mold_code, no = item.mold_no })" role="button"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
+            </tr>
+        }
+    </tbody>
+</table>

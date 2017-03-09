@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SpecialAcceptanceModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="SpecialAcceptanceModelStoreContainer">
+          <EntitySet Name="v_tems" EntityType="SpecialAcceptanceModel.Store.v_tems" store:Type="Views" store:Schema="dbo" store:Name="v_tems">
+            <DefiningQuery>SELECT 
+      [v_tems].[id] AS [id], 
+      [v_tems].[control_no] AS [control_no], 
+      [v_tems].[status_id] AS [status_id], 
+      [v_tems].[status_name] AS [status_name], 
+      [v_tems].[act_dt] AS [act_dt], 
+      [v_tems].[expect_date] AS [expect_date]
+      FROM [dbo].[v_tems] AS [v_tems]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'SpecialAcceptance.dbo.v_tems' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="v_tems">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="control_no" />
+            <PropertyRef Name="status_id" />
+            <PropertyRef Name="status_name" />
+            <PropertyRef Name="expect_date" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="control_no" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="status_id" Type="tinyint" Nullable="false" />
+          <Property Name="status_name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="act_dt" Type="datetime" />
+          <Property Name="expect_date" Type="date" Nullable="false" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SpecialAcceptanceModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SAEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="v_tems" EntityType="SpecialAcceptanceModel.v_tems" />
+        </EntityContainer>
+        <EntityType Name="v_tems">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="control_no" />
+            <PropertyRef Name="status_id" />
+            <PropertyRef Name="status_name" />
+            <PropertyRef Name="expect_date" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="control_no" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="status_id" Nullable="false" />
+          <Property Type="String" Name="status_name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="act_dt" Precision="3" />
+          <Property Type="DateTime" Name="expect_date" Nullable="false" Precision="0" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SpecialAcceptanceModelStoreContainer" CdmEntityContainer="SAEntities">
+          <EntitySetMapping Name="v_tems">
+            <EntityTypeMapping TypeName="SpecialAcceptanceModel.v_tems">
+              <MappingFragment StoreEntitySet="v_tems">
+                <ScalarProperty Name="expect_date" ColumnName="expect_date" />
+                <ScalarProperty Name="act_dt" ColumnName="act_dt" />
+                <ScalarProperty Name="status_name" ColumnName="status_name" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="control_no" ColumnName="control_no" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

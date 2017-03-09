@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Group Management";
+}
+
+@section scripts{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#jTableGroup').jtable({
+            title: 'Group Master',
+            paging: true, //Enable paging
+            pageSize: 10, //Set page size (default: 10)
+            sorting: true, //Enable sorting
+            selecting: true, //Enable selecting
+            defaultSorting: 'gtype_id ASC', //Set default sorting
+            actions: {
+                listAction: '@Url.Action("GroupList","Admin")',
+                deleteAction: '@Url.Action("DeleteGroup","Admin")',
+                updateAction: '@Url.Action("UpdateGroup","Admin")',
+                createAction: '@Url.Action("CreateGroup","Admin")'
+            },
+            fields: {
+                gtype_id: { title: 'Group Type', create: true, edit: true, options: '@Url.Action("GetGTypeList","Admin")' },
+                group_id: { title: 'Group', key: true, create: true, edit: false, options: '@Url.Action("GetTNCGroupList","Admin")' },
+                //active: {
+                //    title: 'Status', create: false, edit: true, type: 'checkbox',
+                //    values: { 'false': 'Inactive', 'true': 'Active' },
+                //    defaultValue: 'true'
+                //},
+                update_dt: { title: 'Update', create: false, edit: false, type: 'date',displayFormat: 'dd-mm-yy' }
+            }
+        });
+        //Load student list from server
+        $('#jTableGroup').jtable('load');
+    });
+</script>
+}
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+<div id="jTableGroup"></div>

@@ -1,0 +1,237 @@
+﻿@model TEMS.Web.Models.td_mold
+@{
+    ViewBag.Title = "Manage Mold";
+}
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.validate();
+        });
+    </script>
+}
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+@if (TempData["alert-success"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        @TempData["alert-success"].ToString()
+    </div>
+}
+@if (TempData["alert-danger"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        @TempData["alert-danger"].ToString()
+    </div>
+}
+
+<table class="table table-bordered table-condensed">
+    <tr>
+        <th>Mold code
+
+        </th>
+        <th>Mold no.</th>
+        <th>Cav./Unit</th>
+        <th>Unit</th>
+        <th>Status</th>
+    </tr>
+    <tr>
+        <td>@Html.DisplayFor(d => d.mold_code)</td>
+        <td>@Html.DisplayFor(d => d.mold_no)</td>
+        <td>@Html.DisplayFor(d => d.cav_per_unit)</td>
+        <td>@Html.DisplayFor(d => d.tm_unit.unit_name)</td>
+        <td @if (Model.status_id == 1)
+            {<text>class="txt_red"</text>}
+            else if (Model.status_id == 100)
+            {<text>class="txt_green"</text>}>
+            @*@switch (Model.status_id)
+            {
+                case 1: <text><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></text>
+                    break;
+                case 50: <text><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span></text>
+                    break;
+                case 100: <text><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></text>
+                    break;
+                case 101: <text><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></text>
+                    break;
+                default: <text><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></text>
+                    break;
+            }*@
+            @Html.DisplayFor(d => d.tm_status.status_name)
+        </td>
+    </tr>
+    <tr>
+        <th>Item code</th>
+        <th>Work center</th>
+        <th>Product</th>
+        <th>Plant</th>
+        <th>Location</th>
+    </tr>
+    <tr>
+        <td>@Html.DisplayFor(d => d.item_code)</td>
+        <td>@Html.DisplayFor(d => d.tm_item.tm_wc.wc_name)</td>
+        <td>@Html.DisplayFor(d => d.tm_item.tm_wc.tm_product.prod_name)</td>
+        <td>@Html.DisplayFor(d => d.tm_item.tm_wc.tm_product.tm_plant.plant_name)</td>
+        <td>@switch (Model.location_id)
+            {
+                case 10: <text><span class="glyphicon glyphicon-home" aria-hidden="true"></span></text>
+                    break;
+                case 20: <text><span class="glyphicon glyphicon-compressed" aria-hidden="true"></span></text>
+                    break;
+                case 30: <text><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></text>
+                    break;
+                case 40: <text><span class="glyphicon glyphicon-plane" aria-hidden="true"></span></text>
+                    break;
+                default: <text><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></text>
+                    break;
+            }
+            @Html.DisplayFor(d => d.tm_location.location_name)
+        </td>
+    </tr>
+    <tr>
+        <td colspan="5">
+            <a class="btn btn-success" href="@Url.Action("Edit", "Mold", new { id = Model.mold_code, no = Model.mold_no })" role="button"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Edit</a>
+            <a class="btn btn-primary" href="@Url.Action("Detail", "Mold", new { id = Model.mold_code, no = Model.mold_no })" role="button" target="_blank"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Detail</a>
+        </td>
+    </tr>
+</table>
+
+<div id="div_operate">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#ref" aria-controls="ref" role="tab" data-toggle="tab">History</a></li>
+        <li role="presentation"><a href="#tnd" aria-controls="tnd" role="tab" data-toggle="tab">Remedy Tool&Die</a></li>
+        <li role="presentation"><a href="#nok" aria-controls="nok" role="tab" data-toggle="tab">Remedy NOK</a></li>
+        <li role="presentation"><a href="#sa" aria-controls="sa" role="tab" data-toggle="tab">Issue SA</a></li>
+        <li role="presentation"><a href="#sc" aria-controls="sc" role="tab" data-toggle="tab">Scrap</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="ref">
+            <br />
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Reference</th>
+                        <th>No.</th>
+                        <th>Active</th>
+                        <th>Problem</th>
+                        <th>Entry Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.Ref)
+                    {
+                    <tr>
+                        <td>@item.ref_name</td>
+                        <td>@item.ref_no</td>
+                        <td>@item.active</td>
+                        <td>@item.prob_name</td>
+                        <td>@item.entry_dt</td>
+                    </tr>    
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="tnd">
+            <form id="form_tnd" name="form_tnd" class="form-horizontal" method="post" action="@Url.Action("CreateTnD", "Mold")" role="form">
+                <br />
+                <input type="hidden" id="tnd_mold" name="tnd_mold" value="@Model.mold_code" />
+                <input type="hidden" id="tnd_no" name="tnd_no" value="@Model.mold_no" />
+                <div class="form-group">
+                    <label for="tnd_prob" class="col-sm-2 control-label">Problem : </label>
+                    <div class="col-sm-4">
+                        <select id="tnd_prob" name="tnd_prob" class="form-control" data-validation="required">
+                            <option value="">-Please Select-</option>
+                        @foreach (var item in ViewBag.Problem)
+                        {
+                            <option value="@item.prob_id">@item.prob_name</option>
+                        }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="woref" class="col-sm-2 control-label">W/O Ref. : </label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="woref" name="woref" placeholder="W/O Ref." data-validation="required">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-4">
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="nok">
+            <form id="form_nok" name="form_nok" class="form-horizontal" method="post" action="@Url.Action("CreateNok", "Mold")" role="form">
+                <br />
+                <input type="hidden" id="nok_mold" name="nok_mold" value="@Model.mold_code" />
+                <input type="hidden" id="nok_no" name="nok_no" value="@Model.mold_no" />
+                <div class="form-group">
+                    <label for="nok_prob" class="col-sm-2 control-label">Problem : </label>
+                    <div class="col-sm-4">
+                        <select id="nok_prob" name="nok_prob" class="form-control" data-validation="required">
+                            <option value="">-Please Select-</option>
+                        @foreach (var item in ViewBag.Problem)
+                        {
+                            <option value="@item.prob_id">@item.prob_name</option>
+                        }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="prno" class="col-sm-2 control-label">PR No. : </label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="prno" name="prno" placeholder="PR No." data-validation="required">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-4">
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="sa">
+            <form id="form_sa" name="form_sa" class="form-horizontal" method="post" action="@Url.Action("CreateSA", "Mold")" role="form">
+                <br />
+                <input type="hidden" id="sa_mold" name="sa_mold" value="@Model.mold_code" />
+                <input type="hidden" id="sa_no" name="sa_no" value="@Model.mold_no" />
+                <div class="form-group">
+                    <label for="sano" class="col-sm-2 control-label">SA No. : </label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="sano" name="sano" placeholder="SA No." data-validation="required">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-4">
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="sc">
+            <form id="form_sc" name="form_sc" class="form-horizontal" method="post" action="@Url.Action("CreateScrap", "Mold")" role="form">
+                <br />
+                <input type="hidden" id="sc_mold" name="sc_mold" value="@Model.mold_code" />
+                <input type="hidden" id="sc_no" name="sc_no" value="@Model.mold_no" />
+                <div class="form-group">
+                    <label for="reason" class="col-sm-2 control-label">Reason for Scrap : </label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="reason" name="reason" placeholder="Reason for Scrap" data-validation="required">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-4">
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

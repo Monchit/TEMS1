@@ -1,0 +1,58 @@
+﻿@model IEnumerable<TEMS.Web.Models.td_tran>
+@{
+    ViewBag.Title = "Mold Detail";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#mold_status').DataTable({
+            scrollY: "300px",
+            scrollX: true,
+            scrollCollapse: true,
+            paging: false,
+            fixedColumns: {
+                leftColumns: 1
+            },
+            order: [[1, "desc"]]
+            //dom: "<ilf<t>>"
+        });
+    });
+</script>
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+<div class="alert alert-warning" role="alert"><strong>@ViewBag.MoldCode No. @ViewBag.MoldNo</strong></div>
+
+<table id="mold_status" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>Action</th>
+            <th>Date Time</th>
+            <th>Job no.</th>
+            <th>WC</th>
+            <th>Machine</th>
+            <th>Shot</th>
+            <th>Judge</th>
+            <th>Emp.</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.tm_action.act_name</td>
+                <td>@item.act_dt.ToString("yyyy/MM/dd HH:mm")</td>
+                <td>@item.job_no</td>
+                <td>@item.wc</td>
+                <td>@item.machine</td>
+                <td>@item.shot</td>
+                <td>@if (!string.IsNullOrEmpty(item.status))
+                    { <text>@item.status</text> }
+                    else
+                    { <text>-</text> }</td>
+                <td>@item.actor</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TncNokToolingModelStoreContainer" CdmEntityContainer="TNTEntities">
+    <EntitySetMapping Name="v_connect_tems">
+      <EntityTypeMapping TypeName="TncNokToolingModel.v_connect_tems">
+        <MappingFragment StoreEntitySet="v_connect_tems">
+          <ScalarProperty Name="eta_tnc" ColumnName="eta_tnc" />
+          <ScalarProperty Name="po_no" ColumnName="po_no" />
+          <ScalarProperty Name="due_date" ColumnName="due_date" />
+          <ScalarProperty Name="pr_no" ColumnName="pr_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

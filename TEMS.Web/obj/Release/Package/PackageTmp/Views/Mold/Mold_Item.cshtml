@@ -1,0 +1,61 @@
+﻿@model IEnumerable<TEMS.Web.Models.td_mold>
+@{
+    ViewBag.Title = "Mold by Item";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#all_mold').DataTable({
+            scrollY: "370px",
+            scrollX: true,
+            scrollCollapse: true,
+            paging: false,
+            fixedColumns: {
+                leftColumns: 3
+            },
+            order: [[1, "asc"],[2,"asc"]]
+            //dom: "<ilf<t>>"
+        });
+    });
+</script>
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+    <table id="all_mold" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th class="text-center">Detail</th>
+                <th>Mold Code</th>
+                <th>Mold no.</th>
+                <th>Cav./Unit</th>
+                <th>Unit</th>
+                <th>Status</th>
+                <th>@@Location</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+            var can_manage = Session["TEMS_GType"].ToString();
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-center"><a href="@Url.Action("Detail", "Mold", new { id = item.mold_code, no = item.mold_no })" role="button"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a></td>
+                    <td>@item.mold_code</td>
+                    <td>@item.mold_no</td>
+                    <td>@item.cav_per_unit</td>
+                    <td>@item.tm_unit.unit_name</td>
+                    <td><span @if(item.status_id == 1){<text>class="txt_red"</text>}
+                        else if (item.status_id == 100){<text>class="txt_green"</text>}>@item.tm_status.status_name</span></td>
+                    <td>@item.tm_location.location_name</td>
+                    <td class="text-center">
+                    @if(can_manage == "1"){
+                        <a href="@Url.Action("Manage", "Mold", new { id = item.mold_code, no = item.mold_no })" role="button"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a>
+                    }
+                    </td>
+                </tr>
+            }
+            }
+        </tbody>
+    </table>

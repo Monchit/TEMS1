@@ -1,0 +1,31 @@
+﻿@model IEnumerable<TEMS.Web.Models.td_mold>
+@{
+    ViewBag.Title = "Mold NG at Production";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th class="text-center">Detail</th>
+                <th>Mold Code</th>
+                <th>Mold no.</th>
+                <th>Remedy no.</th>
+                <th>SA no.</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-center"><a href="@Url.Action("Detail", "Mold", new { id = item.mold_code, no = item.mold_no })" role="button"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a></td>
+                    <td>@item.mold_code</td>
+                    <td>@item.mold_no</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            }
+        </tbody>
+    </table>

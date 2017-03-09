@@ -1,0 +1,147 @@
+﻿@model TEMS.Web.Models.td_mold
+@{
+    ViewBag.Title = "Edit Mold";
+}
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.validate({
+                form: '#form_edit'
+            });
+
+            $('#item_code').select2({
+                minimumInputLength: 1,
+                placeholder: "-Please select-",
+                ajax: {
+                    url: '@Url.Action("GetItemSelect2", "Mold")',
+                    dataType: 'json',
+                    data: function (term, page) {
+                        return {
+                            searchTerm: term
+                        };
+                    },
+                    results: function (data, page) {
+                        return { results: data };
+                    }
+                },
+                formatResult: function (item) { return item.text; },
+                formatSelection: function (item) { return item.text; }
+            });
+
+            var obj = new Object();
+            obj.id = '@Model.mold_code';
+            obj.no = '@Model.mold_no';
+
+            $.get('@Url.Action("GetSelectedItemSelect2", "Mold")', obj, function (data) {
+                $("#item_code").select2("data", data[0]);
+            });
+        });
+    </script>
+}
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+@if (TempData["alert-success"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        @TempData["alert-success"].ToString()
+    </div>
+}
+@if (TempData["alert-danger"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        @TempData["alert-danger"].ToString()
+    </div>
+}
+
+<form id="form_edit" name="form_edit" class="form-horizontal" method="post" action="@Url.Action("UpdateMold", "Mold")" role="form">
+    <div class="row">
+        <div class="col-sm-12">
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="mold_code">Mold code :</label>
+                <div class="col-md-4">
+                    <p class="form-control-static">@Html.DisplayFor(d => d.mold_code)</p>
+                    <input id="mold_code" name="mold_code" type="hidden" value="@Model.mold_code">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="mold_no">Mold no. :</label>
+                <div class="col-md-4">
+                    <p class="form-control-static">@Html.DisplayFor(d => d.mold_no)</p>
+                    <input id="mold_no" name="mold_no" type="hidden" value="@Model.mold_no">
+                </div>
+            </div>
+                        
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="item_code">Item code :</label>
+                <div class="col-md-4">
+                    <input type="text" id="item_code" name="item_code" class="form-control" data-validation="required" />
+                </div>
+                <div class="col-md-3"><p class="form-control-static">@Html.DisplayFor(d => d.item_code)</p></div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="units">Unit :</label>
+                <div class="col-md-4">
+                    <select id="unit" name="unit" class="form-control">
+                        @foreach (var item in ViewBag.Unit)
+                        {
+                            <option value="@item.unit_id" @if (item.unit_id == Model.unit_id)
+                                                          { <text>selected="selected"</text> }>@item.unit_name</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3"><p class="form-control-static">@Html.DisplayFor(d => d.tm_unit.unit_name)</p></div>
+                @*<div class="col-md-2"><a href="@Url.Action("Unit","Admin")" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> If No Unit</a></div>*@
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="cav_per_unit">Cav. / Unit :</label>
+                <div class="col-md-4">
+                    <input id="cav_per_unit" name="cav_per_unit" type="text" placeholder="Cav." class="form-control" data-validation="number" value="@Model.cav_per_unit">
+                </div>
+                <div class="col-md-3"><p class="form-control-static">@Html.DisplayFor(d => d.cav_per_unit)</p></div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="status">Status :</label>
+                <div class="col-md-4">
+                    <select id="status" name="status" class="form-control" data-validation="required">
+                        @foreach (var item in ViewBag.Status)
+                        {
+                            <option value="@item.status_id" @if (item.status_id == Model.status_id)
+                                                          { <text>selected="selected"</text> }>@item.status_name</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3"><p class="form-control-static">@Html.DisplayFor(d => d.tm_status.status_name)</p></div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="location">Location :</label>
+                <div class="col-md-4">
+                    <select id="location" name="location" class="form-control" data-validation="required">
+                        @foreach (var item in ViewBag.Location)
+                        {
+                            <option value="@item.location_id" @if (item.location_id == Model.location_id)
+                                                          { <text>selected="selected"</text> }>@item.location_name</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3"><p class="form-control-static">@Html.DisplayFor(d => d.tm_location.location_name)</p></div>
+            </div>
+
+            <div class="form-group text-right">
+                <label class="col-md-2 control-label" for="btn_submit"></label>
+                <div class="col-md-4">
+                    <button id="btn_submit" name="btn_submit" type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

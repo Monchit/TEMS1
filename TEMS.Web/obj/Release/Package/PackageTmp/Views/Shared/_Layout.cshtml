@@ -1,0 +1,206 @@
+﻿@using TEMS.Web.Helpers
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="TNC Excellent Mold System">
+    <meta name="author" content="Monchit Wajirapornpongsa">
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <title>@ViewBag.Title | TEMS</title>
+
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/themes/base/css")
+    @Styles.Render("~/Content/datatables")
+    @Styles.Render("~/Content/formvalidator")
+    @Styles.Render("~/Content/jTable")
+    @Styles.Render("~/Content/select2")
+    <link href="~/Content/dashboard.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="~/Scripts/html5shiv3.7.3.min.js"></script>
+        <script src="~/Scripts/respond.min.js"></script>
+    <![endif]-->
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/datatables")
+    @Scripts.Render("~/bundles/jTable")
+    @Scripts.Render("~/bundles/formvalidator")
+    @Scripts.Render("~/bundles/select2")
+    @Scripts.Render("~/bundles/moment")
+</head>
+<body>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/Home/Index"><span class="text-red">T</span>NC <span class="text-red">E</span>xcellent <span class="text-red">M</span>old <span class="text-red">S</span>ystem</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+
+                <ul class="nav navbar-nav">
+                    @if (Session["TEMS_Auth"] != null)
+                    {
+                        @Html.MenuLink("Menu", "MainMenu", "Home")
+
+                        var utype = byte.Parse(Session["TEMS_UType"].ToString());
+                        if (utype > 0)
+                        {
+
+                            switch (utype)
+                            {
+                                case 1: <text>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                @Html.MenuLink("Action", "Action", "Admin")
+                                @Html.MenuLink("Judgement", "Judgement", "Admin")
+                                @Html.MenuLink("Location", "Location", "Admin")
+                                @Html.MenuLink("Reference", "Reference", "Admin")
+                                @Html.MenuLink("Status", "Status", "Admin")
+                                @Html.MenuLink("Param", "Param", "Admin")
+                                @Html.MenuLink("Group", "Group", "Admin")
+                                @Html.MenuLink("Group Type", "GroupType", "Admin")
+                                @Html.MenuLink("User", "Users", "Admin")
+                                @Html.MenuLink("User Type", "UserType", "Admin")
+                                @Html.MenuLink("User Level", "UserLevel", "Admin")
+                            </ul>
+                        </li>
+                        </text>
+                                    goto case 5;
+                                case 5: <text>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">PowerUser <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                @Html.MenuLink("Customer", "Customer", "Admin")
+                                @Html.MenuLink("Plant", "Plant", "Admin")
+                                @Html.MenuLink("Product", "Product", "Admin")
+                                @Html.MenuLink("WC", "WC", "Admin")
+                                @Html.MenuLink("Item", "Item", "Admin")
+                                @Html.MenuLink("Unit", "Unit", "Admin")
+                                @Html.MenuLink("Problem", "Problem", "Admin")
+                            </ul>
+                        </li>
+                        </text>
+                                    goto case 9;
+                                case 9: <text>
+                        </text>
+                                    break;
+                            }
+
+                        }
+
+                        var gtype = byte.Parse(Session["TEMS_GType"].ToString());
+                        if (gtype > 0)
+                        {
+                            switch (gtype)
+                            {
+                                case 1: <text>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">MC User <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                @Html.MenuLink("Receive", "Receive", "Mold")
+                                @Html.MenuLink("Search", "Search", "Mold")
+                            </ul>
+                        </li>
+                        </text>
+                                    goto case 2;
+                                case 2: <text>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">User A <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                @Html.MenuLink("Set Parameter", "SetParamA", "Admin")
+                            </ul>
+                        </li>
+                        </text>
+                                    goto case 3;
+                                case 3: <text>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">User B <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                @Html.MenuLink("Set Parameter", "SetParamB", "Admin")
+                            </ul>
+                        </li>
+                        </text>
+                                    goto case 4;
+                                case 4: <text>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">User C <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                @Html.MenuLink("Set Parameter", "SetParamC", "Admin")
+                            </ul>
+                        </li>
+                        </text>
+                                    break;
+                            }
+                        }
+                    }
+                </ul>
+
+                @Html.Partial("_LoginPartial")
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <!-- Begin page content -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                @*<ul class="nav nav-sidebar">
+                    @Html.MenuLink("DASHBOARD", "Dashboard", "Home")
+                </ul>*@
+                <ul class="nav nav-sidebar">
+                    @Html.MenuLink("MOLD", "Index", "Mold")
+                </ul>
+                <ul class="nav nav-sidebar">
+                    <li><a href="#" id="menu_mold" data-toggle="collapse" data-target="#sub_mold" aria-expanded="false">Mold Report <span class="glyphicon glyphicon-menu-down pull-right" aria-hidden="true"></span></a>
+                        <ul class="nav collapse submenu" id="sub_mold" role="menu" aria-labelledby="menu_mold">
+                            @Html.MenuLink("DASHBOARD", "Dashboard", "Mold")
+                            @Html.MenuLink("Mold Status", "MoldStatus", "Mold")
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav nav-sidebar">
+                    @Html.MenuLink("DIE", "Index", "Die")
+                </ul>
+                @*<ul class="nav nav-sidebar">
+                    <li><a href="#" id="menu_die" data-toggle="collapse" data-target="#sub_die" aria-expanded="false">Die Report <span class="glyphicon glyphicon-menu-down pull-right" aria-hidden="true"></span></a>
+                        <ul class="nav collapse submenu" id="sub_die" role="menu" aria-labelledby="menu_die">
+                            @Html.MenuLink("DASHBOARD", "Dashboard", "Die")
+                            @Html.MenuLink("Die Status", "DieStatus", "Die")
+                        </ul>
+                    </li>
+                </ul>*@
+                <ul class="nav nav-sidebar">
+                    @Html.MenuLink("JIG", "Index", "Jig")
+                </ul>
+                @*<ul class="nav nav-sidebar">
+                    <li><a href="#" id="menu_jig" data-toggle="collapse" data-target="#sub_jig" aria-expanded="false">Jig Report <span class="glyphicon glyphicon-menu-down pull-right" aria-hidden="true"></span></a>
+                        <ul class="nav collapse submenu" id="sub_jig" role="menu" aria-labelledby="menu_jig">
+                            @Html.MenuLink("DASHBOARD", "Dashboard", "Jig")
+                            @Html.MenuLink("Jig Status", "JigStatus", "Jig")
+                        </ul>
+                    </li>
+                </ul>*@
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 divbody">
+                @RenderBody()
+            </div>
+        </div>
+        @RenderSection("scripts", required: false)
+    </div>
+</body>
+</html>

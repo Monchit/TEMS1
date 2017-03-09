@@ -1,0 +1,135 @@
+﻿body {
+    padding-top: 50px;
+}
+
+/*form {
+    margin-left: 15px;
+}*/
+
+.glyphicon {
+    top: 0;
+}
+
+.divbody {
+    padding: 0 25px;
+}
+
+/*.text-red {
+    color: red;
+}*/
+
+a.navbar-link {
+    padding: 15px 10px;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.animate {
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s;
+}
+
+.action-button {
+    /*border: 1px solid;*/
+    margin: 15px 0;
+    border-radius: 15px;
+    /*position: relative;
+            margin: 20px;
+            float: left;
+            border-radius: 10px;*/
+}
+
+.gray {
+    background-color: #b8b8b8;
+    border-bottom: 6px solid #6e6e6e;
+    text-shadow: 0px -2px #6e6e6e;
+}
+
+.red {
+    background-color: #E74C3C;
+    border-bottom: 6px solid #BD3E31;
+    text-shadow: 0px -2px #BD3E31;
+}
+
+.action-button:active {
+    transform: translate(0px,5px);
+    -webkit-transform: translate(0px,5px);
+    border-bottom: 1px solid;
+}
+
+.btn-main-txt {
+    font-size: 80px;
+    font-size: 6.3vw;
+    padding: 10px 20px 0px 20px;
+    text-align: center;
+}
+
+.btn-sub-txt {
+    font-size: 24px;
+    font-size: 2.2vw;
+    padding: 5px 0 10px 0;
+    text-align: center;
+}
+
+a.sp-btn {
+    text-decoration: none !important;
+}
+
+a.inactive-btn {
+    color: #ccc;
+    text-decoration: none !important;
+}
+
+    a.inactive-btn:hover,
+    a.inactive-btn:focus {
+        color: #999;
+    }
+
+.padleftright {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.txt_red {
+    color: red !important;
+}
+
+.txt_green {
+    color: #4cff00 !important;
+}
+
+.txt_white {
+    color: #fff !important;
+}
+
+/*Fix jTable*/
+select {
+    color: #555555;
+}
+
+.progress {
+    margin-bottom: 0;
+}
+
+.ui-tooltip {
+    padding:10px;
+}
+.preview-tip {
+    max-width: 250px;
+}
+
+/*fix jTable*/
+/*span.jtable-goto-page select, span.jtable-page-size-change select {
+    height: 25px;
+    width: 60px;
+    padding: 2px 2px;
+    margin-bottom: auto;
+}
+
+div.jtable-main-container table.jtable thead th {
+    text-align: center;
+}
+
+div.jtable-main-container > table.jtable > tbody > tr.jtable-data-row > td {
+    text-align: center;
+}*/

@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Parameter Management";
+}
+
+@section scripts{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#jTableParam').jtable({
+            title: 'Parameter Master',
+            paging: true, //Enable paging
+            pageSize: 10, //Set page size (default: 10)
+            sorting: true, //Enable sorting
+            selecting: true, //Enable selecting
+            defaultSorting: 'param_id ASC', //Set default sorting
+            actions: {
+                listAction: '@Url.Action("ParamList","Admin")',
+                deleteAction: '@Url.Action("DeleteParam","Admin")',
+                updateAction: '@Url.Action("UpdateParam","Admin")',
+                createAction: '@Url.Action("CreateParam","Admin")'
+            },
+            fields: {
+                param_id: { title: 'ID', key: true, create: false, edit: false },
+                param_name: { title: 'Name', create: true, edit: true },
+                active: {
+                    title: 'Status', create: false, edit: true, type: 'checkbox',
+                    values: { 'false': 'Inactive', 'true': 'Active' },
+                    defaultValue: 'true'
+                },
+                update_dt: { title: 'Update', create: false, edit: false, type: 'date',displayFormat: 'dd-mm-yy' }
+            }
+        });
+        //Load student list from server
+        $('#jTableParam').jtable('load');
+    });
+</script>
+}
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+<div id="jTableParam"></div>

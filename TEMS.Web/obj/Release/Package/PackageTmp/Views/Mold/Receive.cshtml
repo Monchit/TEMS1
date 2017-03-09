@@ -1,0 +1,132 @@
+﻿@{
+    ViewBag.Title = "Receive New Mold";
+}
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.validate({
+                form: '#form_receive'
+            });
+
+            $('#item_code').select2({
+                minimumInputLength: 1,
+                placeholder: "-Please select-",
+                ajax: {
+                    url: '@Url.Action("GetItemSelect2", "Mold")',
+                    dataType: 'json',
+                    data: function (term, page) {
+                        return {
+                            searchTerm: term
+                        };
+                    },
+                    results: function (data, page) {
+                        return { results: data };
+                    }
+                },
+                formatResult: function (item) { return item.text; },
+                formatSelection: function (item) { return item.text; }
+            });
+        });
+    </script>
+}
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+@if (TempData["alert-success"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        @TempData["alert-success"].ToString()
+    </div>
+}
+@if (TempData["alert-danger"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        @TempData["alert-danger"].ToString()
+    </div>
+}
+
+<form id="form_receive" name="form_receive" class="form-horizontal" method="post" action="@Url.Action("CreateMold", "Mold")" role="form">
+    <div class="row">
+        <div class="col-sm-12">
+            
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="item_code">Item code :</label>
+                <div class="col-md-4">
+                    <input type="text" id="item_code" name="item_code" class="form-control" data-validation="required" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="mold_code">Mold code :</label>
+                <div class="col-md-4">
+                    <input id="mold_code" name="mold_code" type="text" placeholder="Mold code" class="form-control" data-validation="required">
+                    @*<select id="mold_code" name="mold_code" class="form-control" data-validation="required"></select>*@
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="mold_no">Mold no. :</label>
+                <div class="col-md-4">
+                    <input id="mold_no" name="mold_no" type="text" placeholder="Mold no." class="form-control" data-validation="number" data-validation-allowing="float">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="units">Unit :</label>
+                <div class="col-md-4">
+                    <select id="unit" name="unit" class="form-control" data-validation="required">
+                        <option value="">-Please select-</option>
+                        @foreach (var item in ViewBag.Unit)
+                        {
+                            <option value="@item.unit_id">@item.unit_name</option>
+                        }
+                    </select>
+                </div>
+                @*<div class="col-md-2"><a href="@Url.Action("Unit","Admin")" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> If No Unit</a></div>*@
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="cav_per_unit">Cav. / Unit :</label>
+                <div class="col-md-4">
+                    <input id="cav_per_unit" name="cav_per_unit" type="text" placeholder="Cav." class="form-control" data-validation="number">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="status">Status :</label>
+                <div class="col-md-4">
+                    <select id="status" name="status" class="form-control" data-validation="required">
+                        <option value="">-Please select-</option>
+                        @foreach (var item in ViewBag.Status)
+                        {
+                            <option value="@item.status_id">@item.status_name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="location">Location :</label>
+                <div class="col-md-4">
+                    <select id="location" name="location" class="form-control" data-validation="required">
+                        <option value="">-Please select-</option>
+                        @foreach (var item in ViewBag.Location)
+                        {
+                            <option value="@item.location_id">@item.location_name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group text-right">
+                <label class="col-md-2 control-label" for="btn_submit"></label>
+                <div class="col-md-4">
+                    <button id="btn_submit" name="btn_submit" type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

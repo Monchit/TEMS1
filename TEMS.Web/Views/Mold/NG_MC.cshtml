@@ -1,0 +1,55 @@
+﻿@model IEnumerable<TEMS.Web.Models.td_mold>
+@using TEMS.Web.Models;
+@{
+    ViewBag.Title = "Mold NG at Mold control";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th class="text-center">Detail</th>
+            <th>Mold Code</th>
+            <th>Mold no.</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var can_manage = Session["TEMS_GType"].ToString();
+            foreach (var item in Model)
+            {
+            <tr>
+                <td class="text-center"><a href="@Url.Action("Detail", "Mold", new { id = item.mold_code, no = item.mold_no })" role="button"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a></td>
+                <td>@item.mold_code</td>
+                <td>@item.mold_no</td>
+                <td class="text-center">
+                    @if(can_manage == "1"){
+                    <a href="@Url.Action("Manage", "Mold", new { id = item.mold_code, no = item.mold_no })" role="button"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                    }
+                </td>
+            </tr>
+                TEMS1Entities db = new TEMS1Entities();
+                var get_ref = db.td_reference.Where(w => w.mold_code == item.mold_code && w.mold_no == item.mold_no && w.active == true).OrderByDescending(o => o.entry_dt);
+
+                if(get_ref.Any()){
+                    foreach (var data in get_ref)
+	                {
+		                <tr>
+                            <td></td>
+                            <td><strong>@data.tm_reference.ref_name :</strong> @data.ref_no</td>
+                            <td><strong>Entry Date :</strong> @data.entry_dt.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td></td>
+		                </tr>
+	                }
+                }else{
+                    <tr>
+                        <td colspan="4" class="text-center txt_red">No SA no. or NOK - PR no.</td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>

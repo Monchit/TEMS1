@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TncNokToolingModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="TNTEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="v_connect_tems" EntityType="TncNokToolingModel.v_connect_tems" />
+  </EntityContainer>
+  <EntityType Name="v_connect_tems">
+    <Key>
+      <PropertyRef Name="pr_no" />
+      <PropertyRef Name="due_date" />
+    </Key>
+    <Property Type="String" Name="pr_no" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="due_date" Nullable="false" Precision="0" />
+    <Property Type="String" Name="po_no" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="eta_tnc" Precision="0" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,207 @@
+﻿@{
+    ViewBag.Title = "Search Mold";
+}
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.validate();
+
+            $('#prod_code').bootcomplete({
+                url: '@Url.Action("GetProductComplete", "Mold")',
+                minLength: 2,
+            });
+            $('#wc').bootcomplete({
+                url: '@Url.Action("GetWCComplete", "Mold")',
+                minLength: 1,
+            });
+            $('#item_code').bootcomplete({
+                url: '@Url.Action("GetItemComplete", "Mold")',
+                minLength: 2,
+            });
+            $('#mold_code').bootcomplete({
+                url: '@Url.Action("GetMoldComplete", "Mold")',
+                minLength: 2,
+            });
+
+            $('#btn_search').click(function () {
+                if ($("#formSearch").isValid()) {
+                    $("#loader").show();
+
+                    var obj = new Object();
+                    obj.mold_code = $("#mold_code").val().toUpperCase();
+                    obj.mold_no = $("#mold_no").val();
+                    obj.item_code = $("#item_code").val().toUpperCase();
+                    obj.prod_code = $("#prod_code").val();
+                    obj.unit = $("#unit").val();
+                    obj.cav = $("#cav").val();
+                    obj.location = $("#location").val();
+                    obj.wc = $("#wc").val();
+                    obj.plant = $("#plant").val();
+                    obj.display = $("#display").val();
+
+                    $.ajax({
+                        url: '@Url.Action("_SearchMold", "Mold")',
+                        data: obj,
+                        cache: false,
+                        type: "POST",
+                        dataType: "html",
+                        success: function (data) {
+                            $("#tableContent").html(data);
+                            $("#loader").hide();
+                        },
+                        error: function (message) {
+                            alert(message);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Search</a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+                <form class="form-horizontal" id="formSearch">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4">
+                            <div class="form-group">
+                                <label for="mold_code" class="col-md-5 control-label">Mold code :</label>
+                                <div class="col-md-7">
+                                    <input type="text" id="mold_code" name="mold_code" class="form-control" placeholder="Mold code" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="mold_no" class="col-md-5 control-label">Mold no. :</label>
+                                <div class="col-md-7">
+                                    <input type="text" id="mold_no" name="mold_no" class="form-control" placeholder="Mold no." data-validation="number" data-validation-allowing="float" data-validation-optional="true" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="item_code" class="col-md-5 control-label">Item code :</label>
+                                <div class="col-md-7">
+                                    <input type="text" id="item_code" name="item_code" class="form-control" placeholder="Item code" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="display" class="col-md-5 control-label">Display :</label>
+                                <div class="col-md-7">
+                                    <select id="display" name="display" class="form-control">
+                                        <option value="20">20</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                        <option value="200">200</option>
+                                        <option value="500">500</option>
+                                        <option value="1000">1000</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="form-group">
+                                <label for="plant" class="col-md-5 control-label">Plant :</label>
+                                <div class="col-md-7">
+                                    <select id="plant" name="plant" class="form-control">
+                                        <option value="">-- Select --</option>
+                                        @foreach (var item in ViewBag.Plant)
+                                        {
+                                            <option value="@item.plant_id">@item.plant_name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="prod_code" class="col-md-5 control-label text-nowrap">Product code :</label>
+                                <div class="col-md-7">
+                                    <input type="text" id="prod_code" name="prod_code" class="form-control" placeholder="Product code" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="wc" class="col-md-5 control-label">Work center :</label>
+                                <div class="col-md-7">
+                                    <input type="text" id="wc" name="wc" class="form-control" placeholder="Work center">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="form-group">
+                                <label for="unit" class="col-md-5 control-label">Unit :</label>
+                                <div class="col-md-7">
+                                    <select id="unit" name="unit" class="form-control">
+                                        <option value="">-- Select --</option>
+                                        @foreach (var item in ViewBag.Unit)
+                                        {
+                                            <option value="@item.unit_id">@item.unit_name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="cav" class="col-md-5 control-label">Cav. / Unit :</label>
+                                <div class="col-md-7">
+                                    <input type="text" class="form-control" id="cav" name="cav" placeholder="Cav. / Unit" data-validation="number" data-validation-optional="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="location" class="col-md-5 control-label">Location :</label>
+                                <div class="col-md-7">
+                                    <select id="location" name="location" class="form-control">
+                                        <option value="">-- Select --</option>
+                                        @foreach (var item in ViewBag.Location)
+                                        {
+                                            <option value="@item.location_id">@item.location_name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12 text-right">
+                                    <button id="btn_clear" type="reset" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Clear</button>
+                                    <button id="btn_search" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Search</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">Result</h4>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive" id="tableContent"></div>
+            <div id="loader" style="display: none" class="text-center">
+                <img src="~/img/ajax-loading.gif" alt="Loading Data" />
+            </div>
+        </div>
+    </div>
+
+    @*<div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">List</a>
+            </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+                <div id="loader" style="display: none" class="text-center">
+                    <img src="~/img/ajax-loading.gif" alt="Loading Data" />
+                </div>
+                <div class="table-responsive" id="tableContent">
+                </div>
+            </div>
+        </div>
+    </div>*@
+</div>

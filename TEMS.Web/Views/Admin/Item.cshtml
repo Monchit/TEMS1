@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Item Management";
+}
+
+@section scripts{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#jTableItem').jtable({
+            title: 'Item Master',
+            paging: true, //Enable paging
+            pageSize: 10, //Set page size (default: 10)
+            sorting: true, //Enable sorting
+            selecting: true, //Enable selecting
+            defaultSorting: 'item_code ASC', //Set default sorting
+            actions: {
+                listAction: '@Url.Action("ItemList","Admin")',
+                deleteAction: '@Url.Action("DeleteItem","Admin")',
+                updateAction: '@Url.Action("UpdateItem","Admin")',
+                createAction: '@Url.Action("CreateItem","Admin")'
+            },
+            toolbar: {
+                items: [{
+                    tooltip: 'Click here to export to Excel',
+                    icon: '../img/Excel-icon16.png',
+                    text: 'Export to Excel',
+                    click: function () {
+                        $("#item_export").submit();
+                    }
+                }]
+            },
+            fields: {
+                item_code: { title: 'Item code', key: true, create: true, edit: false },
+                cust_id: { title: 'Customer', create: true, edit: true, options: '@Url.Action("GetCustomerList","Admin")' },
+                wc_id: { title: 'Work Center', create: true, edit: true, options: '@Url.Action("GetWCList","Admin")' },
+                active: {
+                    title: 'Status', create: false, edit: true, type: 'checkbox',
+                    values: { 'false': 'Inactive', 'true': 'Active' },
+                    defaultValue: 'true'
+                },
+                update_dt: { title: 'Update', create: false, edit: false, type: 'date',displayFormat: 'dd-mm-yy' }
+            }
+        });
+        //Load student list from server
+        $('#jTableItem').jtable('load');
+    });
+</script>
+}
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+<form id="item_export" method="post" action="@Url.Action("ItemExport","Admin")">
+    @*<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Export All Item</button>*@
+</form>
+<div id="jTableItem"></div>

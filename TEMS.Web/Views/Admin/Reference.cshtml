@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Reference Management";
+}
+
+@section scripts{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#jTableRef').jtable({
+            title: 'Ref Master',
+            paging: true, //Enable paging
+            pageSize: 10, //Set page size (default: 10)
+            sorting: true, //Enable sorting
+            selecting: true, //Enable selecting
+            defaultSorting: 'ref_id ASC', //Set default sorting
+            actions: {
+                listAction: '@Url.Action("RefList","Admin")',
+                deleteAction: '@Url.Action("DeleteRef","Admin")',
+                updateAction: '@Url.Action("UpdateRef","Admin")',
+                createAction: '@Url.Action("CreateRef","Admin")'
+            },
+            fields: {
+                ref_id: { title: 'ID', key: true, create: false, edit: false },
+                ref_name: { title: 'Name', create: true, edit: true },
+                active: {
+                    title: 'Status', create: false, edit: true, type: 'checkbox',
+                    values: { 'false': 'Inactive', 'true': 'Active' },
+                    defaultValue: 'true'
+                },
+                update_dt: { title: 'Update', create: false, edit: false, type: 'date',displayFormat: 'dd-mm-yy' }
+            }
+        });
+        //Load student list from server
+        $('#jTableRef').jtable('load');
+    });
+</script>
+}
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+<div id="jTableRef"></div>

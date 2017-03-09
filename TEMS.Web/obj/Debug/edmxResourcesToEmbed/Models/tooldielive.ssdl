@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="tooldieliveModel.Store" Alias="Self" Provider="Devart.Data.PostgreSql" ProviderManifestToken="PostgreSQL, 9.3.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="tooldieliveModelStoreContainer">
+    <EntitySet Name="tr_job_progress" EntityType="tooldieliveModel.Store.tr_job_progress" store:Type="Tables" Schema="public" />
+    <EntitySet Name="tr_main_job" EntityType="tooldieliveModel.Store.tr_main_job" store:Type="Tables" Schema="public" />
+    <EntitySet Name="ts_process_result" EntityType="tooldieliveModel.Store.ts_process_result" store:Type="Tables" Schema="public" />
+  </EntityContainer>
+  <EntityType Name="tr_job_progress">
+    <Key>
+      <PropertyRef Name="main_job_no" />
+      <PropertyRef Name="sub_job_no" />
+      <PropertyRef Name="marking_step" />
+    </Key>
+    <Property Name="main_job_no" Type="char" Nullable="false" MaxLength="20" />
+    <Property Name="sub_job_no" Type="char" Nullable="false" MaxLength="20" />
+    <Property Name="marking_step" Type="int" Nullable="false" />
+    <Property Name="process_code" Type="char" MaxLength="50" />
+    <Property Name="qty" Type="int" />
+    <Property Name="machine_no" Type="char" MaxLength="10" />
+    <Property Name="entry_date" Type="char" MaxLength="8" />
+    <Property Name="entry_time" Type="char" MaxLength="6" />
+    <Property Name="update_date" Type="char" MaxLength="8" />
+    <Property Name="update_time" Type="char" MaxLength="6" />
+    <Property Name="est_setup_time" Type="int" />
+    <Property Name="est_machine_time" Type="int" />
+  </EntityType>
+  <EntityType Name="tr_main_job">
+    <Key>
+      <PropertyRef Name="main_job_no" />
+    </Key>
+    <Property Name="main_job_no" Type="char" Nullable="false" MaxLength="20" />
+    <Property Name="wo_no" Type="char" MaxLength="20" />
+    <Property Name="customer_oid" Type="int" />
+    <Property Name="customer_name" Type="char" MaxLength="150" />
+    <Property Name="cost_code" Type="char" MaxLength="10" />
+    <Property Name="plant_id" Type="int" />
+    <Property Name="plant_code" Type="char" MaxLength="10" />
+    <Property Name="plant_div_name" Type="char" MaxLength="100" />
+    <Property Name="item" Type="char" MaxLength="150" />
+    <Property Name="job_type" Type="char" MaxLength="1" />
+    <Property Name="product_type_code" Type="char" MaxLength="5" />
+    <Property Name="product_type_name" Type="char" MaxLength="150" />
+    <Property Name="description" Type="text" />
+    <Property Name="qty" Type="int" />
+    <Property Name="unit" Type="char" MaxLength="5" />
+    <Property Name="ref_old_td" Type="char" MaxLength="20" />
+    <Property Name="wo_evaluation" Type="char" MaxLength="30" />
+    <Property Name="due_date" Type="char" MaxLength="8" />
+    <Property Name="due_time" Type="char" MaxLength="6" />
+    <Property Name="promise_date" Type="char" MaxLength="8" />
+    <Property Name="promise_time" Type="char" MaxLength="6" />
+    <Property Name="entry_date" Type="char" MaxLength="8" />
+    <Property Name="entry_time" Type="char" MaxLength="6" />
+    <Property Name="update_date" Type="char" MaxLength="8" />
+    <Property Name="update_time" Type="char" MaxLength="6" />
+    <Property Name="issue_job_date" Type="char" MaxLength="8" />
+    <Property Name="issue_job_time" Type="char" MaxLength="6" />
+  </EntityType>
+  <EntityType Name="ts_process_result">
+    <Key>
+      <PropertyRef Name="transaction_no" />
+    </Key>
+    <Property Name="transaction_no" Type="char" Nullable="false" MaxLength="10" />
+    <Property Name="main_job_no" Type="char" MaxLength="20" />
+    <Property Name="sub_job_no" Type="char" MaxLength="20" />
+    <Property Name="qty" Type="int" />
+    <Property Name="marking_step" Type="char" MaxLength="10" />
+    <Property Name="process_code" Type="char" MaxLength="10" />
+    <Property Name="machine_code" Type="char" MaxLength="10" />
+    <Property Name="update_pgm" Type="char" MaxLength="10" />
+    <Property Name="update_date" Type="char" MaxLength="8" />
+    <Property Name="update_time" Type="char" MaxLength="6" />
+    <Property Name="status" Type="char" MaxLength="1" />
+    <Property Name="start_date" Type="char" MaxLength="8" />
+    <Property Name="start_time" Type="char" MaxLength="6" />
+    <Property Name="start_user" Type="char" MaxLength="30" />
+    <Property Name="finished_date" Type="char" MaxLength="8" />
+    <Property Name="finished_time" Type="char" MaxLength="6" />
+    <Property Name="finished_user" Type="char" MaxLength="30" />
+    <Property Name="spent_time" Type="int" />
+    <Property Name="remark" Type="char" MaxLength="100" />
+    <Property Name="transfer_sign" Type="char" MaxLength="1" />
+    <Property Name="type_est" Type="char" MaxLength="2" />
+  </EntityType>
+</Schema>

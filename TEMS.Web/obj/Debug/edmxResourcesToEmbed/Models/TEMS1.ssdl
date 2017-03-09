@@ -1,0 +1,776 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TEMS1Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="TEMS1ModelStoreContainer">
+    <EntitySet Name="td_cal" EntityType="TEMS1Model.Store.td_cal" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="td_cal_round" EntityType="TEMS1Model.Store.td_cal_round" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="td_mold" EntityType="TEMS1Model.Store.td_mold" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="td_param" EntityType="TEMS1Model.Store.td_param" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="td_reference" EntityType="TEMS1Model.Store.td_reference" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="td_tran" EntityType="TEMS1Model.Store.td_tran" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tm_action" EntityType="TEMS1Model.Store.tm_action" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tm_customer" EntityType="TEMS1Model.Store.tm_customer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tm_group" EntityType="TEMS1Model.Store.tm_group" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tm_gtype" EntityType="TEMS1Model.Store.tm_gtype" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tm_item" EntityType="TEMS1Model.Store.tm_item" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tm_judgement" EntityType="TEMS1Model.Store.tm_judgement" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tm_location" EntityType="TEMS1Model.Store.tm_location" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tm_mold" EntityType="TEMS1Model.Store.tm_mold" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tm_param" EntityType="TEMS1Model.Store.tm_param" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tm_plant" EntityType="TEMS1Model.Store.tm_plant" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tm_problem" EntityType="TEMS1Model.Store.tm_problem" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tm_product" EntityType="TEMS1Model.Store.tm_product" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tm_reference" EntityType="TEMS1Model.Store.tm_reference" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tm_status" EntityType="TEMS1Model.Store.tm_status" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tm_ulv" EntityType="TEMS1Model.Store.tm_ulv" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tm_unit" EntityType="TEMS1Model.Store.tm_unit" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tm_user" EntityType="TEMS1Model.Store.tm_user" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tm_utype" EntityType="TEMS1Model.Store.tm_utype" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tm_wc" EntityType="TEMS1Model.Store.tm_wc" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tt_mplan" EntityType="TEMS1Model.Store.tt_mplan" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="v_mold_status" EntityType="TEMS1Model.Store.v_mold_status" store:Type="Views" store:Schema="dbo" store:Name="v_mold_status">
+      <DefiningQuery>SELECT 
+      [v_mold_status].[plant_id] AS [plant_id], 
+      [v_mold_status].[plant_name] AS [plant_name], 
+      [v_mold_status].[prod_id] AS [prod_id], 
+      [v_mold_status].[prod_name] AS [prod_name], 
+      [v_mold_status].[wc_id] AS [wc_id], 
+      [v_mold_status].[wc_name] AS [wc_name], 
+      [v_mold_status].[item_code] AS [item_code], 
+      [v_mold_status].[OK_Mold] AS [OK_Mold], 
+      [v_mold_status].[OK_Prod] AS [OK_Prod], 
+      [v_mold_status].[NG_Mold] AS [NG_Mold], 
+      [v_mold_status].[NG_Prod] AS [NG_Prod], 
+      [v_mold_status].[NG_TnD] AS [NG_TnD], 
+      [v_mold_status].[NG_Nok] AS [NG_Nok], 
+      [v_mold_status].[Total] AS [Total], 
+      [v_mold_status].[need] AS [need], 
+      [v_mold_status].[circulate] AS [circulate], 
+      [v_mold_status].[spare] AS [spare]
+      FROM [dbo].[v_mold_status] AS [v_mold_status]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_ref" EntityType="TEMS1Model.Store.v_ref" store:Type="Views" store:Schema="dbo" store:Name="v_ref">
+      <DefiningQuery>SELECT 
+      [v_ref].[mold_code] AS [mold_code], 
+      [v_ref].[mold_no] AS [mold_no], 
+      [v_ref].[ref_name] AS [ref_name], 
+      [v_ref].[ref_no] AS [ref_no], 
+      [v_ref].[prob_name] AS [prob_name], 
+      [v_ref].[entry_dt] AS [entry_dt], 
+      [v_ref].[active] AS [active]
+      FROM [dbo].[v_ref] AS [v_ref]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_td_cal_td_cal_round" Association="TEMS1Model.Store.FK_td_cal_td_cal_round">
+      <End Role="td_cal_round" EntitySet="td_cal_round" />
+      <End Role="td_cal" EntitySet="td_cal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_mold_tm_item" Association="TEMS1Model.Store.FK_td_mold_tm_item">
+      <End Role="tm_item" EntitySet="tm_item" />
+      <End Role="td_mold" EntitySet="td_mold" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_mold_tm_location" Association="TEMS1Model.Store.FK_td_mold_tm_location">
+      <End Role="tm_location" EntitySet="tm_location" />
+      <End Role="td_mold" EntitySet="td_mold" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_mold_tm_status" Association="TEMS1Model.Store.FK_td_mold_tm_status">
+      <End Role="tm_status" EntitySet="tm_status" />
+      <End Role="td_mold" EntitySet="td_mold" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_mold_tm_unit" Association="TEMS1Model.Store.FK_td_mold_tm_unit">
+      <End Role="tm_unit" EntitySet="tm_unit" />
+      <End Role="td_mold" EntitySet="td_mold" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_param_tm_item" Association="TEMS1Model.Store.FK_td_param_tm_item">
+      <End Role="tm_item" EntitySet="tm_item" />
+      <End Role="td_param" EntitySet="td_param" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_param_tm_param" Association="TEMS1Model.Store.FK_td_param_tm_param">
+      <End Role="tm_param" EntitySet="tm_param" />
+      <End Role="td_param" EntitySet="td_param" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_reference_td_mold" Association="TEMS1Model.Store.FK_td_reference_td_mold">
+      <End Role="td_mold" EntitySet="td_mold" />
+      <End Role="td_reference" EntitySet="td_reference" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_reference_tm_problem" Association="TEMS1Model.Store.FK_td_reference_tm_problem">
+      <End Role="tm_problem" EntitySet="tm_problem" />
+      <End Role="td_reference" EntitySet="td_reference" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_reference_tm_reference" Association="TEMS1Model.Store.FK_td_reference_tm_reference">
+      <End Role="tm_reference" EntitySet="tm_reference" />
+      <End Role="td_reference" EntitySet="td_reference" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_tran_td_mold" Association="TEMS1Model.Store.FK_td_tran_td_mold">
+      <End Role="td_mold" EntitySet="td_mold" />
+      <End Role="td_tran" EntitySet="td_tran" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_tran_tm_action" Association="TEMS1Model.Store.FK_td_tran_tm_action">
+      <End Role="tm_action" EntitySet="tm_action" />
+      <End Role="td_tran" EntitySet="td_tran" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_tran_tm_judgement" Association="TEMS1Model.Store.FK_td_tran_tm_judgement">
+      <End Role="tm_judgement" EntitySet="tm_judgement" />
+      <End Role="td_tran" EntitySet="td_tran" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_tran_tm_problem" Association="TEMS1Model.Store.FK_td_tran_tm_problem">
+      <End Role="tm_problem" EntitySet="tm_problem" />
+      <End Role="td_tran" EntitySet="td_tran" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_tran_tm_ulv" Association="TEMS1Model.Store.FK_td_tran_tm_ulv">
+      <End Role="tm_ulv" EntitySet="tm_ulv" />
+      <End Role="td_tran" EntitySet="td_tran" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tm_group_tm_gtype" Association="TEMS1Model.Store.FK_tm_group_tm_gtype">
+      <End Role="tm_gtype" EntitySet="tm_gtype" />
+      <End Role="tm_group" EntitySet="tm_group" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tm_item_tm_customer" Association="TEMS1Model.Store.FK_tm_item_tm_customer">
+      <End Role="tm_customer" EntitySet="tm_customer" />
+      <End Role="tm_item" EntitySet="tm_item" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tm_item_tm_wc" Association="TEMS1Model.Store.FK_tm_item_tm_wc">
+      <End Role="tm_wc" EntitySet="tm_wc" />
+      <End Role="tm_item" EntitySet="tm_item" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tm_prod_tm_plant" Association="TEMS1Model.Store.FK_tm_prod_tm_plant">
+      <End Role="tm_plant" EntitySet="tm_plant" />
+      <End Role="tm_product" EntitySet="tm_product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tm_user_tm_utype" Association="TEMS1Model.Store.FK_tm_user_tm_utype">
+      <End Role="tm_utype" EntitySet="tm_utype" />
+      <End Role="tm_user" EntitySet="tm_user" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tm_wc_tm_prod" Association="TEMS1Model.Store.FK_tm_wc_tm_prod">
+      <End Role="tm_product" EntitySet="tm_product" />
+      <End Role="tm_wc" EntitySet="tm_wc" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="td_cal">
+    <Key>
+      <PropertyRef Name="round" />
+      <PropertyRef Name="item_code" />
+    </Key>
+    <Property Name="round" Type="int" Nullable="false" />
+    <Property Name="item_code" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="need" Type="int" Nullable="false" />
+    <Property Name="circulate" Type="int" Nullable="false" />
+    <Property Name="spare" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="td_cal_round">
+    <Key>
+      <PropertyRef Name="round" />
+    </Key>
+    <Property Name="round" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="entry_dt" Type="datetime" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="td_mold">
+    <Key>
+      <PropertyRef Name="mold_code" />
+      <PropertyRef Name="mold_no" />
+    </Key>
+    <Property Name="mold_code" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="mold_no" Type="float" Nullable="false" />
+    <Property Name="item_code" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="status_id" Type="int" Nullable="false" />
+    <Property Name="location_id" Type="tinyint" Nullable="false" />
+    <Property Name="cav_per_unit" Type="int" Nullable="false" />
+    <Property Name="unit_id" Type="tinyint" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="td_param">
+    <Key>
+      <PropertyRef Name="item_code" />
+      <PropertyRef Name="param_id" />
+    </Key>
+    <Property Name="item_code" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="param_id" Type="tinyint" Nullable="false" />
+    <Property Name="value" Type="float" Nullable="false" />
+    <Property Name="update_user" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="update_dt" Type="datetime" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="td_reference">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="mold_code" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="mold_no" Type="float" Nullable="false" />
+    <Property Name="ref_id" Type="tinyint" Nullable="false" />
+    <Property Name="ref_no" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="prob_id" Type="tinyint" />
+    <Property Name="entry_dt" Type="datetime" Nullable="false" />
+    <Property Name="entry_user" Type="varchar" Nullable="false" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="td_tran">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="mold_code" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="mold_no" Type="float" Nullable="false" />
+    <Property Name="round" Type="int" />
+    <Property Name="ulv_id" Type="tinyint" />
+    <Property Name="org_id" Type="int" />
+    <Property Name="act_id" Type="tinyint" />
+    <Property Name="actor" Type="varchar" MaxLength="10" />
+    <Property Name="act_dt" Type="datetime" Nullable="false" />
+    <Property Name="judge_id" Type="varchar" MaxLength="10" />
+    <Property Name="job_no" Type="varchar" MaxLength="20" />
+    <Property Name="wc" Type="varchar" MaxLength="10" />
+    <Property Name="machine" Type="varchar" MaxLength="10" />
+    <Property Name="shot" Type="int" />
+    <Property Name="status" Type="varchar" MaxLength="10" />
+    <Property Name="prob_id" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="tm_action">
+    <Key>
+      <PropertyRef Name="act_id" />
+    </Key>
+    <Property Name="act_id" Type="tinyint" Nullable="false" />
+    <Property Name="act_name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="update_user" Type="varchar" MaxLength="10" />
+    <Property Name="update_dt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tm_customer">
+    <Key>
+      <PropertyRef Name="cust_id" />
+    </Key>
+    <Property Name="cust_id" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="cust_name" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="update_user" Type="varchar" MaxLength="10" />
+    <Property Name="update_dt" Type="datetime" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tm_group">
+    <Key>
+      <PropertyRef Name="group_id" />
+    </Key>
+    <Property Name="group_id" Type="int" Nullable="false" />
+    <Property Name="gtype_id" Type="tinyint" Nullable="false" />
+    <Property Name="update_user" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="update_dt" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tm_gtype">
+    <Key>
+      <PropertyRef Name="gtype_id" />
+    </Key>
+    <Property Name="gtype_id" Type="tinyint" Nullable="false" />
+    <Property Name="gtype_name" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="update_user" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="update_dt" Type="datetime" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tm_item">
+    <Key>
+      <PropertyRef Name="item_code" />
+    </Key>
+    <Property Name="item_code" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="cust_id" Type="varchar" MaxLength="20" />
+    <Property Name="wc_id" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="update_user" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="update_dt" Type="datetime" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tm_judgement">
+    <Key>
+      <PropertyRef Name="judge_id" />
+    </Key>
+    <Property Name="judge_id" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="judge_name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="update_user" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="update_dt" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tm_location">
+    <Key>
+      <PropertyRef Name="location_id" />
+    </Key>
+    <Property Name="location_id" Type="tinyint" Nullable="false" />
+    <Property Name="location_name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="update_user" Type="varchar" MaxLength="10" />
+    <Property Name="update_dt" Type="datetime" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tm_mold">
+    <Key>
+      <PropertyRef Name="mold_code" />
+    </Key>
+    <Property Name="mold_code" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="entry_user" Type="varchar" MaxLength="10" />
+    <Property Name="entry_dt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tm_param">
+    <Key>
+      <PropertyRef Name="param_id" />
+    </Key>
+    <Property Name="param_id" Type="tinyint" Nullable="false" />
+    <Property Name="param_name" Type="nchar" Nullable="false" MaxLength="10" />
+    <Property Name="update_user" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="update_dt" Type="datetime" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tm_plant">
+    <Key>
+      <PropertyRef Name="plant_id" />
+    </Key>
+    <Property Name="plant_id" Type="tinyint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="plant_name" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="update_user" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="update_dt" Type="datetime" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tm_problem">
+    <Key>
+      <PropertyRef Name="prob_id" />
+    </Key>
+    <Property Name="prob_id" Type="tinyint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="prob_name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="update_user" Type="varchar" MaxLength="10" />
+    <Property Name="update_dt" Type="datetime" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tm_product">
+    <Key>
+      <PropertyRef Name="prod_id" />
+    </Key>
+    <Property Name="prod_id" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="prod_name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="plant_id" Type="tinyint" Nullable="false" />
+    <Property Name="update_user" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="update_dt" Type="datetime" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tm_reference">
+    <Key>
+      <PropertyRef Name="ref_id" />
+    </Key>
+    <Property Name="ref_id" Type="tinyint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ref_name" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="update_user" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="update_dt" Type="datetime" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tm_status">
+    <Key>
+      <PropertyRef Name="status_id" />
+    </Key>
+    <Property Name="status_id" Type="int" Nullable="false" />
+    <Property Name="status_name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="update_user" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="update_dt" Type="datetime" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tm_ulv">
+    <Key>
+      <PropertyRef Name="ulv_id" />
+    </Key>
+    <Property Name="ulv_id" Type="tinyint" Nullable="false" />
+    <Property Name="ulv_name" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="update_user" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="update_dt" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tm_unit">
+    <Key>
+      <PropertyRef Name="unit_id" />
+    </Key>
+    <Property Name="unit_id" Type="tinyint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="unit_name" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="update_user" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="update_dt" Type="datetime" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tm_user">
+    <Key>
+      <PropertyRef Name="emp_code" />
+    </Key>
+    <Property Name="emp_code" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="utype_id" Type="tinyint" Nullable="false" />
+    <Property Name="update_user" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="update_dt" Type="datetime" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tm_utype">
+    <Key>
+      <PropertyRef Name="utype_id" />
+    </Key>
+    <Property Name="utype_id" Type="tinyint" Nullable="false" />
+    <Property Name="utype_name" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="update_user" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="update_dt" Type="datetime" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tm_wc">
+    <Key>
+      <PropertyRef Name="wc_id" />
+    </Key>
+    <Property Name="wc_id" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="wc_name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="prod_id" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="update_user" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="update_dt" Type="datetime" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tt_mplan">
+    <Key>
+      <PropertyRef Name="item_code" />
+      <PropertyRef Name="yy" />
+      <PropertyRef Name="mm" />
+    </Key>
+    <Property Name="item_code" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="yy" Type="int" Nullable="false" />
+    <Property Name="mm" Type="int" Nullable="false" />
+    <Property Name="value" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'TEMS1.dbo.v_mold_status' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="v_mold_status">
+    <Key>
+      <PropertyRef Name="plant_id" />
+      <PropertyRef Name="plant_name" />
+      <PropertyRef Name="prod_id" />
+      <PropertyRef Name="prod_name" />
+      <PropertyRef Name="wc_id" />
+      <PropertyRef Name="wc_name" />
+      <PropertyRef Name="item_code" />
+      <PropertyRef Name="need" />
+      <PropertyRef Name="circulate" />
+      <PropertyRef Name="spare" />
+    </Key>
+    <Property Name="plant_id" Type="tinyint" Nullable="false" />
+    <Property Name="plant_name" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="prod_id" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="prod_name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="wc_id" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="wc_name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="item_code" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="OK_Mold" Type="int" />
+    <Property Name="OK_Prod" Type="int" />
+    <Property Name="NG_Mold" Type="int" />
+    <Property Name="NG_Prod" Type="int" />
+    <Property Name="NG_TnD" Type="int" />
+    <Property Name="NG_Nok" Type="int" />
+    <Property Name="Total" Type="int" />
+    <Property Name="need" Type="int" Nullable="false" />
+    <Property Name="circulate" Type="int" Nullable="false" />
+    <Property Name="spare" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'TEMS1.dbo.v_ref' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="v_ref">
+    <Key>
+      <PropertyRef Name="mold_code" />
+      <PropertyRef Name="mold_no" />
+      <PropertyRef Name="ref_name" />
+      <PropertyRef Name="ref_no" />
+      <PropertyRef Name="entry_dt" />
+      <PropertyRef Name="active" />
+      <PropertyRef Name="prob_name" />
+    </Key>
+    <Property Name="mold_code" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="mold_no" Type="float" Nullable="false" />
+    <Property Name="ref_name" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="ref_no" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="prob_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="entry_dt" Type="datetime" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_td_cal_td_cal_round">
+    <End Role="td_cal_round" Type="TEMS1Model.Store.td_cal_round" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="td_cal" Type="TEMS1Model.Store.td_cal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="td_cal_round">
+        <PropertyRef Name="round" />
+      </Principal>
+      <Dependent Role="td_cal">
+        <PropertyRef Name="round" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_mold_tm_item">
+    <End Role="tm_item" Type="TEMS1Model.Store.tm_item" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="td_mold" Type="TEMS1Model.Store.td_mold" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_item">
+        <PropertyRef Name="item_code" />
+      </Principal>
+      <Dependent Role="td_mold">
+        <PropertyRef Name="item_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_mold_tm_location">
+    <End Role="tm_location" Type="TEMS1Model.Store.tm_location" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="td_mold" Type="TEMS1Model.Store.td_mold" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_location">
+        <PropertyRef Name="location_id" />
+      </Principal>
+      <Dependent Role="td_mold">
+        <PropertyRef Name="location_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_mold_tm_status">
+    <End Role="tm_status" Type="TEMS1Model.Store.tm_status" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="td_mold" Type="TEMS1Model.Store.td_mold" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_status">
+        <PropertyRef Name="status_id" />
+      </Principal>
+      <Dependent Role="td_mold">
+        <PropertyRef Name="status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_mold_tm_unit">
+    <End Role="tm_unit" Type="TEMS1Model.Store.tm_unit" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="td_mold" Type="TEMS1Model.Store.td_mold" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_unit">
+        <PropertyRef Name="unit_id" />
+      </Principal>
+      <Dependent Role="td_mold">
+        <PropertyRef Name="unit_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_param_tm_item">
+    <End Role="tm_item" Type="TEMS1Model.Store.tm_item" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="td_param" Type="TEMS1Model.Store.td_param" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_item">
+        <PropertyRef Name="item_code" />
+      </Principal>
+      <Dependent Role="td_param">
+        <PropertyRef Name="item_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_param_tm_param">
+    <End Role="tm_param" Type="TEMS1Model.Store.tm_param" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="td_param" Type="TEMS1Model.Store.td_param" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_param">
+        <PropertyRef Name="param_id" />
+      </Principal>
+      <Dependent Role="td_param">
+        <PropertyRef Name="param_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_reference_td_mold">
+    <End Role="td_mold" Type="TEMS1Model.Store.td_mold" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="td_reference" Type="TEMS1Model.Store.td_reference" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="td_mold">
+        <PropertyRef Name="mold_code" />
+        <PropertyRef Name="mold_no" />
+      </Principal>
+      <Dependent Role="td_reference">
+        <PropertyRef Name="mold_code" />
+        <PropertyRef Name="mold_no" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_reference_tm_problem">
+    <End Role="tm_problem" Type="TEMS1Model.Store.tm_problem" Multiplicity="0..1" />
+    <End Role="td_reference" Type="TEMS1Model.Store.td_reference" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_problem">
+        <PropertyRef Name="prob_id" />
+      </Principal>
+      <Dependent Role="td_reference">
+        <PropertyRef Name="prob_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_reference_tm_reference">
+    <End Role="tm_reference" Type="TEMS1Model.Store.tm_reference" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="td_reference" Type="TEMS1Model.Store.td_reference" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_reference">
+        <PropertyRef Name="ref_id" />
+      </Principal>
+      <Dependent Role="td_reference">
+        <PropertyRef Name="ref_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_tran_td_mold">
+    <End Role="td_mold" Type="TEMS1Model.Store.td_mold" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="td_tran" Type="TEMS1Model.Store.td_tran" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="td_mold">
+        <PropertyRef Name="mold_code" />
+        <PropertyRef Name="mold_no" />
+      </Principal>
+      <Dependent Role="td_tran">
+        <PropertyRef Name="mold_code" />
+        <PropertyRef Name="mold_no" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_tran_tm_action">
+    <End Role="tm_action" Type="TEMS1Model.Store.tm_action" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="td_tran" Type="TEMS1Model.Store.td_tran" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_action">
+        <PropertyRef Name="act_id" />
+      </Principal>
+      <Dependent Role="td_tran">
+        <PropertyRef Name="act_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_tran_tm_judgement">
+    <End Role="tm_judgement" Type="TEMS1Model.Store.tm_judgement" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="td_tran" Type="TEMS1Model.Store.td_tran" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_judgement">
+        <PropertyRef Name="judge_id" />
+      </Principal>
+      <Dependent Role="td_tran">
+        <PropertyRef Name="judge_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_tran_tm_problem">
+    <End Role="tm_problem" Type="TEMS1Model.Store.tm_problem" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="td_tran" Type="TEMS1Model.Store.td_tran" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_problem">
+        <PropertyRef Name="prob_id" />
+      </Principal>
+      <Dependent Role="td_tran">
+        <PropertyRef Name="prob_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_tran_tm_ulv">
+    <End Role="tm_ulv" Type="TEMS1Model.Store.tm_ulv" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="td_tran" Type="TEMS1Model.Store.td_tran" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_ulv">
+        <PropertyRef Name="ulv_id" />
+      </Principal>
+      <Dependent Role="td_tran">
+        <PropertyRef Name="ulv_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tm_group_tm_gtype">
+    <End Role="tm_gtype" Type="TEMS1Model.Store.tm_gtype" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tm_group" Type="TEMS1Model.Store.tm_group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_gtype">
+        <PropertyRef Name="gtype_id" />
+      </Principal>
+      <Dependent Role="tm_group">
+        <PropertyRef Name="gtype_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tm_item_tm_customer">
+    <End Role="tm_customer" Type="TEMS1Model.Store.tm_customer" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tm_item" Type="TEMS1Model.Store.tm_item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_customer">
+        <PropertyRef Name="cust_id" />
+      </Principal>
+      <Dependent Role="tm_item">
+        <PropertyRef Name="cust_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tm_item_tm_wc">
+    <End Role="tm_wc" Type="TEMS1Model.Store.tm_wc" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tm_item" Type="TEMS1Model.Store.tm_item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_wc">
+        <PropertyRef Name="wc_id" />
+      </Principal>
+      <Dependent Role="tm_item">
+        <PropertyRef Name="wc_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tm_prod_tm_plant">
+    <End Role="tm_plant" Type="TEMS1Model.Store.tm_plant" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tm_product" Type="TEMS1Model.Store.tm_product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_plant">
+        <PropertyRef Name="plant_id" />
+      </Principal>
+      <Dependent Role="tm_product">
+        <PropertyRef Name="plant_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tm_user_tm_utype">
+    <End Role="tm_utype" Type="TEMS1Model.Store.tm_utype" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tm_user" Type="TEMS1Model.Store.tm_user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_utype">
+        <PropertyRef Name="utype_id" />
+      </Principal>
+      <Dependent Role="tm_user">
+        <PropertyRef Name="utype_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tm_wc_tm_prod">
+    <End Role="tm_product" Type="TEMS1Model.Store.tm_product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tm_wc" Type="TEMS1Model.Store.tm_wc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_product">
+        <PropertyRef Name="prod_id" />
+      </Principal>
+      <Dependent Role="tm_wc">
+        <PropertyRef Name="prod_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Customer Management";
+}
+
+@section scripts{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#jTableCustomer').jtable({
+            title: 'Customer Master',
+            paging: true, //Enable paging
+            pageSize: 10, //Set page size (default: 10)
+            sorting: true, //Enable sorting
+            selecting: true, //Enable selecting
+            defaultSorting: 'cust_id ASC', //Set default sorting
+            actions: {
+                listAction: '@Url.Action("CustomerList","Admin")',
+                deleteAction: '@Url.Action("DeleteCustomer","Admin")',
+                updateAction: '@Url.Action("UpdateCustomer","Admin")',
+                createAction: '@Url.Action("CreateCustomer","Admin")'
+            },
+            fields: {
+                cust_id: { title: 'ID', key: true, create: true, edit: false },
+                cust_name: { title: 'Name', create: true, edit: true, width: '45%' },
+                active: {
+                    title: 'Status', create: false, edit: true, type: 'checkbox',
+                    values: { 'false': 'Inactive', 'true': 'Active' },
+                    defaultValue: 'true'
+                },
+                update_dt: { title: 'Update', create: false, edit: false, type: 'date',displayFormat: 'dd-mm-yy' }
+            }
+        });
+        //Load student list from server
+        $('#jTableCustomer').jtable('load');
+    });
+</script>
+}
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+<div id="jTableCustomer"></div>

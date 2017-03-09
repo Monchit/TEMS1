@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SpecialAcceptanceModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SAEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="v_tems" EntityType="SpecialAcceptanceModel.v_tems" />
+  </EntityContainer>
+  <EntityType Name="v_tems">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="control_no" />
+      <PropertyRef Name="status_id" />
+      <PropertyRef Name="status_name" />
+      <PropertyRef Name="expect_date" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="control_no" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Byte" Name="status_id" Nullable="false" />
+    <Property Type="String" Name="status_name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="act_dt" Precision="3" />
+    <Property Type="DateTime" Name="expect_date" Nullable="false" Precision="0" />
+  </EntityType>
+</Schema>

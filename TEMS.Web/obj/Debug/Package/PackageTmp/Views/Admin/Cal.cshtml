@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Calculate Management";
+}
+
+@section scripts{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#jTableCal').jtable({
+            title: 'Calculate Master',
+            paging: true, //Enable paging
+            pageSize: 10, //Set page size (default: 10)
+            sorting: true, //Enable sorting
+            selecting: true, //Enable selecting
+            defaultSorting: 'item_code ASC', //Set default sorting
+            actions: {
+                listAction: '@Url.Action("CalList","Admin")',
+                updateAction: '@Url.Action("UpdateCal","Admin")'
+            },
+            fields: {
+                item_code: { title: 'Item Code', key: true, edit: false },
+                need: { title: 'Need', edit: true },
+                circulate: { title: 'Circulate', edit: true },
+                spare: { title: 'Spare', edit: true }
+            }
+        });
+        //Load student list from server
+        $('#jTableCal').jtable('load');
+    });
+</script>
+}
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+<div id="jTableCal"></div>

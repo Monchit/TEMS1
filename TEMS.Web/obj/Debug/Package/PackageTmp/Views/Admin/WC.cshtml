@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Work Center Management";
+}
+
+@section scripts{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#jTableWC').jtable({
+            title: 'Work Center Master',
+            paging: true, //Enable paging
+            pageSize: 10, //Set page size (default: 10)
+            sorting: true, //Enable sorting
+            selecting: true, //Enable selecting
+            defaultSorting: 'wc_id ASC', //Set default sorting
+            actions: {
+                listAction: '@Url.Action("WCList","Admin")',
+                deleteAction: '@Url.Action("DeleteWC","Admin")',
+                updateAction: '@Url.Action("UpdateWC","Admin")',
+                createAction: '@Url.Action("CreateWC","Admin")'
+            },
+            fields: {
+                wc_id: { title: 'ID', key: true, create: true, edit: false },
+                wc_name: { title: 'Name', create: true, edit: true },
+                prod_id: { title: 'Product', create: true, edit: true, width: '35%', options: '@Url.Action("GetProductList","Admin")' },
+                active: {
+                    title: 'Status', create: false, edit: true, type: 'checkbox',
+                    values: { 'false': 'Inactive', 'true': 'Active' },
+                    defaultValue: 'true'
+                },
+                update_dt: { title: 'Update', create: false, edit: false, type: 'date',displayFormat: 'dd-mm-yy' }
+            }
+        });
+        //Load student list from server
+        $('#jTableWC').jtable('load');
+    });
+</script>
+}
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+<div id="jTableWC"></div>

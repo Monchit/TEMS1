@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "User Management";
+}
+
+@section scripts{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#jTableUser').jtable({
+            title: 'User Master',
+            paging: true, //Enable paging
+            pageSize: 10, //Set page size (default: 10)
+            sorting: true, //Enable sorting
+            selecting: true, //Enable selecting
+            defaultSorting: 'utype_id ASC', //Set default sorting
+            actions: {
+                listAction: '@Url.Action("UserList","Admin")',
+                deleteAction: '@Url.Action("DeleteUser","Admin")',
+                updateAction: '@Url.Action("UpdateUser","Admin")',
+                createAction: '@Url.Action("CreateUser","Admin")'
+            },
+            fields: {
+                emp_code: { title: 'Name', key: true, create: true, edit: false, options: '@Url.Action("GetTNCUserList","Admin")' },
+                utype_id: { title: 'User Type', create: true, edit: true, options: '@Url.Action("GetUTypeList","Admin")' },
+                active: {
+                    title: 'Status', create: false, edit: true, type: 'checkbox',
+                    values: { 'false': 'Inactive', 'true': 'Active' },
+                    defaultValue: 'true'
+                },
+                update_dt: { title: 'Update', create: false, edit: false, type: 'date',displayFormat: 'dd-mm-yy' }
+            }
+        });
+        //Load student list from server
+        $('#jTableUser').jtable('load');
+    });
+</script>
+}
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+<div id="jTableUser"></div>

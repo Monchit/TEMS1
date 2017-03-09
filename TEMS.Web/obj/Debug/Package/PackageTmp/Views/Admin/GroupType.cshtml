@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Group Type Management";
+}
+
+@section scripts{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#jTableGType').jtable({
+            title: 'User Type Master',
+            paging: true, //Enable paging
+            pageSize: 10, //Set page size (default: 10)
+            sorting: true, //Enable sorting
+            selecting: true, //Enable selecting
+            defaultSorting: 'gtype_id ASC', //Set default sorting
+            actions: {
+                listAction: '@Url.Action("GTypeList","Admin")',
+                deleteAction: '@Url.Action("DeleteGType","Admin")',
+                updateAction: '@Url.Action("UpdateGType","Admin")',
+                createAction: '@Url.Action("CreateGType","Admin")'
+            },
+            fields: {
+                gtype_id: { title: 'ID', key: true, create: false, edit: false },
+                gtype_name: { title: 'Name', create: true, edit: true },
+                active: {
+                    title: 'Status', create: false, edit: true, type: 'checkbox',
+                    values: { 'false': 'Inactive', 'true': 'Active' },
+                    defaultValue: 'true'
+                },
+                update_dt: { title: 'Update', create: false, edit: false, type: 'date',displayFormat: 'dd-mm-yy' }
+            }
+        });
+        //Load student list from server
+        $('#jTableGType').jtable('load');
+    });
+</script>
+}
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+<div id="jTableGType"></div>

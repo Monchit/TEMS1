@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="tooldieliveModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="tooldieliveEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="tr_job_progress" EntityType="tooldieliveModel.tr_job_progress" />
+    <EntitySet Name="tr_main_job" EntityType="tooldieliveModel.tr_main_job" />
+    <EntitySet Name="ts_process_result" EntityType="tooldieliveModel.ts_process_result" />
+  </EntityContainer>
+  <EntityType Name="tr_job_progress">
+    <Key>
+      <PropertyRef Name="main_job_no" />
+      <PropertyRef Name="sub_job_no" />
+      <PropertyRef Name="marking_step" />
+    </Key>
+    <Property Name="main_job_no" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="sub_job_no" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="marking_step" Type="Int32" Nullable="false" />
+    <Property Name="process_code" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="qty" Type="Int32" />
+    <Property Name="machine_no" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="entry_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="entry_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="update_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="update_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="est_setup_time" Type="Int32" />
+    <Property Name="est_machine_time" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tr_main_job">
+    <Key>
+      <PropertyRef Name="main_job_no" />
+    </Key>
+    <Property Name="main_job_no" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="wo_no" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="customer_oid" Type="Int32" />
+    <Property Name="customer_name" Type="String" MaxLength="150" Unicode="true" FixedLength="true" />
+    <Property Name="cost_code" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="plant_id" Type="Int32" />
+    <Property Name="plant_code" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="plant_div_name" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+    <Property Name="item" Type="String" MaxLength="150" Unicode="true" FixedLength="true" />
+    <Property Name="job_type" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+    <Property Name="product_type_code" Type="String" MaxLength="5" Unicode="true" FixedLength="true" />
+    <Property Name="product_type_name" Type="String" MaxLength="150" Unicode="true" FixedLength="true" />
+    <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="qty" Type="Int32" />
+    <Property Name="unit" Type="String" MaxLength="5" Unicode="true" FixedLength="true" />
+    <Property Name="ref_old_td" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="wo_evaluation" Type="String" MaxLength="30" Unicode="true" FixedLength="true" />
+    <Property Name="due_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="due_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="promise_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="promise_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="entry_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="entry_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="update_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="update_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="issue_job_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="issue_job_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="ts_process_result">
+    <Key>
+      <PropertyRef Name="transaction_no" />
+    </Key>
+    <Property Type="String" Name="transaction_no" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="main_job_no" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="sub_job_no" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Type="Int32" Name="qty" />
+    <Property Type="String" Name="marking_step" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="process_code" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="machine_code" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="update_pgm" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="update_date" MaxLength="8" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="update_time" MaxLength="6" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="status" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="start_date" MaxLength="8" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="start_time" MaxLength="6" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="start_user" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="finished_date" MaxLength="8" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="finished_time" MaxLength="6" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="finished_user" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Type="Int32" Name="spent_time" />
+    <Property Type="String" Name="remark" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="transfer_sign" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="type_est" MaxLength="2" FixedLength="true" Unicode="true" />
+  </EntityType>
+</Schema>

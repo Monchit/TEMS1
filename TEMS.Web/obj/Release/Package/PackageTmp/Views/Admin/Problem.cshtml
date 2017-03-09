@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Problem Management";
+}
+
+@section scripts{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#jTableProblem').jtable({
+            title: 'Problem Master',
+            paging: true, //Enable paging
+            pageSize: 10, //Set page size (default: 10)
+            sorting: true, //Enable sorting
+            selecting: true, //Enable selecting
+            defaultSorting: 'prob_id ASC', //Set default sorting
+            actions: {
+                listAction: '@Url.Action("ProblemList","Admin")',
+                deleteAction: '@Url.Action("DeleteProblem","Admin")',
+                updateAction: '@Url.Action("UpdateProblem","Admin")',
+                createAction: '@Url.Action("CreateProblem","Admin")'
+            },
+            fields: {
+                prob_id: { title: 'ID', key: true, create: false, edit: false },
+                prob_name: { title: 'Name', create: true, edit: true },
+                active: {
+                    title: 'Status', create: false, edit: true, type: 'checkbox',
+                    values: { 'false': 'Inactive', 'true': 'Active' },
+                    defaultValue: 'true'
+                },
+                update_dt: { title: 'Update', create: false, edit: false, type: 'date',displayFormat: 'dd-mm-yy' }
+            }
+        });
+        //Load student list from server
+        $('#jTableProblem').jtable('load');
+    });
+</script>
+}
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+<div id="jTableProblem"></div>

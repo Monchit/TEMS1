@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Product Management";
+}
+
+@section scripts{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#jTableProduct').jtable({
+            title: 'Product Master',
+            paging: true, //Enable paging
+            pageSize: 10, //Set page size (default: 10)
+            sorting: true, //Enable sorting
+            selecting: true, //Enable selecting
+            defaultSorting: 'prod_id ASC', //Set default sorting
+            actions: {
+                listAction: '@Url.Action("ProductList","Admin")',
+                deleteAction: '@Url.Action("DeleteProduct","Admin")',
+                updateAction: '@Url.Action("UpdateProduct","Admin")',
+                createAction: '@Url.Action("CreateProduct","Admin")'
+            },
+            fields: {
+                prod_id: { title: 'ID', key: true, create: true, edit: false },
+                prod_name: { title: 'Name', create: true, edit: true, width: '40%' },
+                plant_id: { title: 'Plant', create: true, edit: true, options: '@Url.Action("GetPlantList","Admin")' },
+                active: {
+                    title: 'Status', create: false, edit: true, type: 'checkbox',
+                    values: { 'false': 'Inactive', 'true': 'Active' },
+                    defaultValue: 'true'
+                },
+                update_dt: { title: 'Update', create: false, edit: false, type: 'date',displayFormat: 'dd-mm-yy' }
+            }
+        });
+        //Load student list from server
+        $('#jTableProduct').jtable('load');
+    });
+</script>
+}
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+<div id="jTableProduct"></div>

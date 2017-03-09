@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Set Parameter A";
+}
+
+@section scripts{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#jTableParamA').jtable({
+            title: 'Parameter A',
+            paging: true, //Enable paging
+            pageSize: 10, //Set page size (default: 10)
+            sorting: true, //Enable sorting
+            selecting: true, //Enable selecting
+            defaultSorting: 'item_code ASC', //Set default sorting
+            actions: {
+                listAction: '@Url.Action("ParamAList","Admin")',
+                deleteAction: '@Url.Action("DeleteParamA","Admin")',
+                updateAction: '@Url.Action("UpdateParamA","Admin")',
+                createAction: '@Url.Action("CreateParamA","Admin")'
+            },
+            fields: {
+                item_code: { title: 'Item code', key: true, create: true, edit: false, options: '@Url.Action("GetItemList","Admin")' },
+                param_id: { title: 'Parameter', key: true, create: true, edit: false, options: '@Url.Action("GetParamAList","Admin")' },
+                value: { title: 'Value', create: true, edit: true },
+                active: {
+                    title: 'Status', create: false, edit: true, type: 'checkbox',
+                    values: { 'false': 'Inactive', 'true': 'Active' },
+                    defaultValue: 'true'
+                },
+                update_dt: { title: 'Update', create: false, edit: false, type: 'date',displayFormat: 'dd-mm-yy' }
+            }
+        });
+        //Load student list from server
+        $('#jTableParamA').jtable('load');
+    });
+</script>
+}
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+<div id="jTableParamA"></div>

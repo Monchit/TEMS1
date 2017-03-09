@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Calculate Round Management";
+}
+
+@section scripts{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#jTableCalRound').jtable({
+            title: 'Calculate Round Master',
+            paging: true, //Enable paging
+            pageSize: 10, //Set page size (default: 10)
+            sorting: true, //Enable sorting
+            selecting: true, //Enable selecting
+            defaultSorting: 'round DESC', //Set default sorting
+            actions: {
+                listAction: '@Url.Action("CalRoundList","Admin")',
+                updateAction: '@Url.Action("UpdateCalRound","Admin")'
+            },
+            fields: {
+                round: { title: 'Round', key: true, edit: false },
+                entry_dt: { title: 'Entry Date', edit: false, type: 'date', displayFormat: 'dd-mm-yy' },
+                active: {
+                    title: 'Active', create: false, edit: true, type: 'checkbox',
+                    values: { 'false': 'Inactive', 'true': 'Active' },
+                    defaultValue: 'true'
+                }
+            }
+        });
+        //Load student list from server
+        $('#jTableCalRound').jtable('load');
+    });
+</script>
+}
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+<div id="jTableCalRound"></div>

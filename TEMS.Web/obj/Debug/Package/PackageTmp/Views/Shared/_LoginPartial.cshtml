@@ -1,0 +1,35 @@
+﻿@if (Session["TEMS_Auth"] == null)
+{
+    <text>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.validate({
+                form: '#formLogin'
+            });
+        });
+    </script>
+    <form id="formLogin" name="formLogin" class="navbar-form navbar-right" action="@Url.Action("Login", "Home")" method="post">
+
+        <div class="input-group">
+            <span class="input-group-addon glyphicon glyphicon-user"></span>
+            <input type="text" id="Username" name="Username" placeholder="Username" class="form-control" data-validation="length alphanumeric" data-validation-length="3-15">
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-addon glyphicon glyphicon-lock"></span>
+            <input type="password" id="Password" name="Password" placeholder="Password" class="form-control" data-validation="required">
+        </div>
+
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-log-in"></span> Login</button>
+    </form>
+    </text>
+}
+else
+{
+    <text>
+    <form id="formLogout" name="formLogout" class="navbar-form navbar-right" action="@Url.Action("Logout", "Home")" method="post">
+        <a class="navbar-link"><span class="glyphicon glyphicon-user"></span> @Session["TEMS_Name"].ToString(). </a>
+        <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Log out</button>
+    </form>
+    </text>
+}

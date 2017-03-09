@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="tooldieliveModelStoreContainer" CdmEntityContainer="tooldieliveEntities">
+    <EntitySetMapping Name="tr_job_progress">
+      <EntityTypeMapping TypeName="tooldieliveModel.tr_job_progress">
+        <MappingFragment StoreEntitySet="tr_job_progress">
+          <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+          <ScalarProperty Name="sub_job_no" ColumnName="sub_job_no" />
+          <ScalarProperty Name="marking_step" ColumnName="marking_step" />
+          <ScalarProperty Name="process_code" ColumnName="process_code" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="machine_no" ColumnName="machine_no" />
+          <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+          <ScalarProperty Name="entry_time" ColumnName="entry_time" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="est_setup_time" ColumnName="est_setup_time" />
+          <ScalarProperty Name="est_machine_time" ColumnName="est_machine_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tr_main_job">
+      <EntityTypeMapping TypeName="tooldieliveModel.tr_main_job">
+        <MappingFragment StoreEntitySet="tr_main_job">
+          <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+          <ScalarProperty Name="wo_no" ColumnName="wo_no" />
+          <ScalarProperty Name="customer_oid" ColumnName="customer_oid" />
+          <ScalarProperty Name="customer_name" ColumnName="customer_name" />
+          <ScalarProperty Name="cost_code" ColumnName="cost_code" />
+          <ScalarProperty Name="plant_id" ColumnName="plant_id" />
+          <ScalarProperty Name="plant_code" ColumnName="plant_code" />
+          <ScalarProperty Name="plant_div_name" ColumnName="plant_div_name" />
+          <ScalarProperty Name="item" ColumnName="item" />
+          <ScalarProperty Name="job_type" ColumnName="job_type" />
+          <ScalarProperty Name="product_type_code" ColumnName="product_type_code" />
+          <ScalarProperty Name="product_type_name" ColumnName="product_type_name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="unit" ColumnName="unit" />
+          <ScalarProperty Name="ref_old_td" ColumnName="ref_old_td" />
+          <ScalarProperty Name="wo_evaluation" ColumnName="wo_evaluation" />
+          <ScalarProperty Name="due_date" ColumnName="due_date" />
+          <ScalarProperty Name="due_time" ColumnName="due_time" />
+          <ScalarProperty Name="promise_date" ColumnName="promise_date" />
+          <ScalarProperty Name="promise_time" ColumnName="promise_time" />
+          <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+          <ScalarProperty Name="entry_time" ColumnName="entry_time" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="issue_job_date" ColumnName="issue_job_date" />
+          <ScalarProperty Name="issue_job_time" ColumnName="issue_job_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ts_process_result">
+      <EntityTypeMapping TypeName="tooldieliveModel.ts_process_result">
+        <MappingFragment StoreEntitySet="ts_process_result">
+          <ScalarProperty Name="type_est" ColumnName="type_est" />
+          <ScalarProperty Name="transfer_sign" ColumnName="transfer_sign" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="spent_time" ColumnName="spent_time" />
+          <ScalarProperty Name="finished_user" ColumnName="finished_user" />
+          <ScalarProperty Name="finished_time" ColumnName="finished_time" />
+          <ScalarProperty Name="finished_date" ColumnName="finished_date" />
+          <ScalarProperty Name="start_user" ColumnName="start_user" />
+          <ScalarProperty Name="start_time" ColumnName="start_time" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="update_pgm" ColumnName="update_pgm" />
+          <ScalarProperty Name="machine_code" ColumnName="machine_code" />
+          <ScalarProperty Name="process_code" ColumnName="process_code" />
+          <ScalarProperty Name="marking_step" ColumnName="marking_step" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="sub_job_no" ColumnName="sub_job_no" />
+          <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+          <ScalarProperty Name="transaction_no" ColumnName="transaction_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

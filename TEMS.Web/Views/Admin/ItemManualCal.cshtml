@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Manual Calculate";
+}
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+<form id="import_cal" class="form-inline" method="post" action="@Url.Action("AddCal","Admin")" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="file_cal">Import File :</label>
+        <input type="file" id="file_cal" name="file_cal" />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

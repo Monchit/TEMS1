@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SpecialAcceptanceModelStoreContainer" CdmEntityContainer="SAEntities">
+    <EntitySetMapping Name="v_tems">
+      <EntityTypeMapping TypeName="SpecialAcceptanceModel.v_tems">
+        <MappingFragment StoreEntitySet="v_tems">
+          <ScalarProperty Name="expect_date" ColumnName="expect_date" />
+          <ScalarProperty Name="act_dt" ColumnName="act_dt" />
+          <ScalarProperty Name="status_name" ColumnName="status_name" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="control_no" ColumnName="control_no" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

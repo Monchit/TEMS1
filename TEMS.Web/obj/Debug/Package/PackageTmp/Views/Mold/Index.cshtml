@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Mold";
+}
+
+@section scripts{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#jTableOnProcess').jtable({
+            //title: 'Parameter Master',
+            paging: true, //Enable paging
+            pageSize: 10, //Set page size (default: 10)
+            sorting: true, //Enable sorting
+            selecting: true, //Enable selecting
+            defaultSorting: 'id DESC', //Set default sorting
+            actions: {
+                listAction: '@Url.Action("ParamList","Admin")'
+            },
+            fields: {
+                id: { title: 'ID', key: true },
+                mold_code: { title: 'Mold code' },
+                mold_no: { title: 'Mold no.' },
+                ulv_id: { title: 'User Level' },
+                org_id: { title: 'Organize' },
+                act_id: { title: 'Action' },
+                act_dt: { title: 'Update', type: 'date', displayFormat: 'dd-mm-yy' }
+            }
+        });
+        //Load student list from server
+        //$('#jTableOnProcess').jtable('load');
+    });
+</script>
+}
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+<div id="jTableOnProcess"></div>

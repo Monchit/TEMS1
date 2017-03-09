@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TncNokToolingModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="TncNokToolingModelStoreContainer">
+    <EntitySet Name="v_connect_tems" EntityType="TncNokToolingModel.Store.v_connect_tems" store:Type="Views" store:Schema="dbo" store:Name="v_connect_tems">
+      <DefiningQuery>SELECT 
+      [v_connect_tems].[pr_no] AS [pr_no], 
+      [v_connect_tems].[due_date] AS [due_date], 
+      [v_connect_tems].[po_no] AS [po_no], 
+      [v_connect_tems].[eta_tnc] AS [eta_tnc]
+      FROM [dbo].[v_connect_tems] AS [v_connect_tems]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'TncNokTooling.dbo.v_connect_tems' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="v_connect_tems">
+    <Key>
+      <PropertyRef Name="pr_no" />
+      <PropertyRef Name="due_date" />
+    </Key>
+    <Property Name="pr_no" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="due_date" Type="date" Nullable="false" />
+    <Property Name="po_no" Type="varchar" MaxLength="50" />
+    <Property Name="eta_tnc" Type="date" />
+  </EntityType>
+</Schema>

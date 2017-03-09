@@ -1,0 +1,131 @@
+﻿@{
+    ViewBag.Title = "Mold status";
+}
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //$.validate({
+            //    form: '#form_filter'
+            //});
+
+            $("#sel_plant").change(function () {
+                var param = $("#sel_plant").val();
+                var ddl = $('#sel_product');
+                if (param != "") {
+                    var url = '@Url.Action("GetProductList", "Mold")?plant_id=' + param;
+                    $.getJSON(url, function (result) {
+                        ddl.empty();
+                        $(document.createElement('option')).attr('value', '').text('-Please Select-').appendTo(ddl);
+                        $(result).each(function () {
+                            $(document.createElement('option'))
+                                .attr('value', this.Id)
+                                .text(this.Id + ' - ' + this.Value)
+                                .appendTo(ddl);
+                        });
+                    });
+                } else {
+                    ddl.empty();
+                }
+            });
+
+            $("#sel_product").change(function () {
+                var param = $("#sel_product").val();
+                var ddl = $('#sel_wc');
+                if (param != "") {
+                    var url = '@Url.Action("GetWCList", "Mold")?prod_id=' + param;
+                    $.getJSON(url, function (result) {
+                        ddl.empty();
+                        $(document.createElement('option')).attr('value', '').text('-Please Select-').appendTo(ddl);
+                        $(result).each(function () {
+                            $(document.createElement('option'))
+                                .attr('value', this.Id)
+                                .text(this.Id + ' - ' + this.Value)
+                                .appendTo(ddl);
+                        });
+                    });
+                } else {
+                    ddl.empty();
+                }
+            });
+
+            $("#btn_ok").click(function () {
+                errors = [];
+                if ($("#form_filter").isValid()) {
+                    var obj = new Object();
+                    obj.plant = $("#sel_plant").val();
+                    obj.product = $("#sel_product").val();
+                    obj.wc = $("#sel_wc").val();
+
+                    $.ajax({
+                        url: '@Url.Action("_MoldStatusPivot", "Mold")',
+                        data: obj,
+                        cache: false,
+                        type: "POST",
+                        dataType: "html",
+                        success: function (data) {
+                            $("#div_mold").html(data);
+                        },
+                        error: function (message) {
+                            alert(message);
+                        }
+                    });
+                }
+            });
+
+            @*$("#btn_ep").click(function () {
+                errors = [];
+                if ($("#form_filter").isValid()) {
+                    var obj = new Object();
+                    obj.plant = $("#sel_plant").val();
+                    obj.product = $("#sel_product").val();
+                    obj.wc = $("#sel_wc").val();
+
+                    $.ajax({
+                        url: '@Url.Action("ExportMoldStatus", "Mold")',
+                        data: obj,
+                        cache: false,
+                        type: "POST",
+                        dataType: "html",
+                        success: function (data) {
+                            //$("#div_mold").html(data);
+                        },
+                        error: function (message) {
+                            alert(message);
+                        }
+                    });
+                }
+            });*@
+        });
+    </script>
+}
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+<form id="form_filter" class="form-inline" method="post" action="@Url.Action("ExportMoldStatus", "Mold")">
+    <div class="form-group">
+        <label for="sel_plant">**Select Plant : </label>
+        <select id="sel_plant" name="sel_plant" class="form-control" data-validation="required">
+            <option value="">-Please Select-</option>
+            @foreach (var item in ViewBag.SelectPlant)
+            {
+                <option value="@item.plant_id">@item.plant_name</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="sel_product">**Select Product : </label>
+        <select id="sel_product" name="sel_product" class="form-control" data-validation="required">
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="sel_wc">Select Work center : </label>
+        <select id="sel_wc" name="sel_wc" class="form-control">
+        </select>
+    </div>
+    <button id="btn_ok" type="button" class="btn btn-warning"><span class="glyphicon glyphicon-ok"></span> OK</button>
+    <button id="btn_ep" type="submit" class="btn btn-success"><span class="glyphicon glyphicon-list-alt"></span> Export</button>
+</form>
+<br />
+
+<div id="div_mold"></div>

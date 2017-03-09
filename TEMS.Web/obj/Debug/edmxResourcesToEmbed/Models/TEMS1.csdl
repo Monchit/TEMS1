@@ -1,0 +1,802 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TEMS1Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="TEMS1Entities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="td_cal" EntityType="TEMS1Model.td_cal" />
+    <EntitySet Name="td_cal_round" EntityType="TEMS1Model.td_cal_round" />
+    <EntitySet Name="td_mold" EntityType="TEMS1Model.td_mold" />
+    <EntitySet Name="td_param" EntityType="TEMS1Model.td_param" />
+    <EntitySet Name="td_tran" EntityType="TEMS1Model.td_tran" />
+    <EntitySet Name="tm_action" EntityType="TEMS1Model.tm_action" />
+    <EntitySet Name="tm_customer" EntityType="TEMS1Model.tm_customer" />
+    <EntitySet Name="tm_group" EntityType="TEMS1Model.tm_group" />
+    <EntitySet Name="tm_gtype" EntityType="TEMS1Model.tm_gtype" />
+    <EntitySet Name="tm_item" EntityType="TEMS1Model.tm_item" />
+    <EntitySet Name="tm_judgement" EntityType="TEMS1Model.tm_judgement" />
+    <EntitySet Name="tm_location" EntityType="TEMS1Model.tm_location" />
+    <EntitySet Name="tm_mold" EntityType="TEMS1Model.tm_mold" />
+    <EntitySet Name="tm_param" EntityType="TEMS1Model.tm_param" />
+    <EntitySet Name="tm_plant" EntityType="TEMS1Model.tm_plant" />
+    <EntitySet Name="tm_problem" EntityType="TEMS1Model.tm_problem" />
+    <EntitySet Name="tm_product" EntityType="TEMS1Model.tm_product" />
+    <EntitySet Name="tm_reference" EntityType="TEMS1Model.tm_reference" />
+    <EntitySet Name="tm_status" EntityType="TEMS1Model.tm_status" />
+    <EntitySet Name="tm_ulv" EntityType="TEMS1Model.tm_ulv" />
+    <EntitySet Name="tm_unit" EntityType="TEMS1Model.tm_unit" />
+    <EntitySet Name="tm_user" EntityType="TEMS1Model.tm_user" />
+    <EntitySet Name="tm_utype" EntityType="TEMS1Model.tm_utype" />
+    <EntitySet Name="tm_wc" EntityType="TEMS1Model.tm_wc" />
+    <EntitySet Name="tt_mplan" EntityType="TEMS1Model.tt_mplan" />
+    <EntitySet Name="v_mold_status" EntityType="TEMS1Model.v_mold_status" />
+    <AssociationSet Name="FK_td_cal_td_cal_round" Association="TEMS1Model.FK_td_cal_td_cal_round">
+      <End Role="td_cal_round" EntitySet="td_cal_round" />
+      <End Role="td_cal" EntitySet="td_cal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_mold_tm_item" Association="TEMS1Model.FK_td_mold_tm_item">
+      <End Role="tm_item" EntitySet="tm_item" />
+      <End Role="td_mold" EntitySet="td_mold" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_mold_tm_location" Association="TEMS1Model.FK_td_mold_tm_location">
+      <End Role="tm_location" EntitySet="tm_location" />
+      <End Role="td_mold" EntitySet="td_mold" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_mold_tm_status" Association="TEMS1Model.FK_td_mold_tm_status">
+      <End Role="tm_status" EntitySet="tm_status" />
+      <End Role="td_mold" EntitySet="td_mold" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_mold_tm_unit" Association="TEMS1Model.FK_td_mold_tm_unit">
+      <End Role="tm_unit" EntitySet="tm_unit" />
+      <End Role="td_mold" EntitySet="td_mold" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_tran_td_mold" Association="TEMS1Model.FK_td_tran_td_mold">
+      <End Role="td_mold" EntitySet="td_mold" />
+      <End Role="td_tran" EntitySet="td_tran" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_param_tm_item" Association="TEMS1Model.FK_td_param_tm_item">
+      <End Role="tm_item" EntitySet="tm_item" />
+      <End Role="td_param" EntitySet="td_param" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_param_tm_param" Association="TEMS1Model.FK_td_param_tm_param">
+      <End Role="tm_param" EntitySet="tm_param" />
+      <End Role="td_param" EntitySet="td_param" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_tran_tm_action" Association="TEMS1Model.FK_td_tran_tm_action">
+      <End Role="tm_action" EntitySet="tm_action" />
+      <End Role="td_tran" EntitySet="td_tran" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_tran_tm_judgement" Association="TEMS1Model.FK_td_tran_tm_judgement">
+      <End Role="tm_judgement" EntitySet="tm_judgement" />
+      <End Role="td_tran" EntitySet="td_tran" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_tran_tm_problem" Association="TEMS1Model.FK_td_tran_tm_problem">
+      <End Role="tm_problem" EntitySet="tm_problem" />
+      <End Role="td_tran" EntitySet="td_tran" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_tran_tm_ulv" Association="TEMS1Model.FK_td_tran_tm_ulv">
+      <End Role="tm_ulv" EntitySet="tm_ulv" />
+      <End Role="td_tran" EntitySet="td_tran" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tm_item_tm_customer" Association="TEMS1Model.FK_tm_item_tm_customer">
+      <End Role="tm_customer" EntitySet="tm_customer" />
+      <End Role="tm_item" EntitySet="tm_item" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tm_group_tm_gtype" Association="TEMS1Model.FK_tm_group_tm_gtype">
+      <End Role="tm_gtype" EntitySet="tm_gtype" />
+      <End Role="tm_group" EntitySet="tm_group" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tm_item_tm_wc" Association="TEMS1Model.FK_tm_item_tm_wc">
+      <End Role="tm_wc" EntitySet="tm_wc" />
+      <End Role="tm_item" EntitySet="tm_item" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tt_mplan_tm_item" Association="TEMS1Model.FK_tt_mplan_tm_item">
+      <End Role="tm_item" EntitySet="tm_item" />
+      <End Role="tt_mplan" EntitySet="tt_mplan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tm_prod_tm_plant" Association="TEMS1Model.FK_tm_prod_tm_plant">
+      <End Role="tm_plant" EntitySet="tm_plant" />
+      <End Role="tm_product" EntitySet="tm_product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tm_wc_tm_prod" Association="TEMS1Model.FK_tm_wc_tm_prod">
+      <End Role="tm_product" EntitySet="tm_product" />
+      <End Role="tm_wc" EntitySet="tm_wc" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tm_user_tm_utype" Association="TEMS1Model.FK_tm_user_tm_utype">
+      <End Role="tm_utype" EntitySet="tm_utype" />
+      <End Role="tm_user" EntitySet="tm_user" />
+    </AssociationSet>
+    <EntitySet Name="v_ref" EntityType="TEMS1Model.v_ref" />
+    <EntitySet Name="td_reference" EntityType="TEMS1Model.td_reference" />
+    <AssociationSet Name="FK_td_reference_td_mold" Association="TEMS1Model.FK_td_reference_td_mold">
+      <End Role="td_mold" EntitySet="td_mold" />
+      <End Role="td_reference" EntitySet="td_reference" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_reference_tm_problem" Association="TEMS1Model.FK_td_reference_tm_problem">
+      <End Role="tm_problem" EntitySet="tm_problem" />
+      <End Role="td_reference" EntitySet="td_reference" />
+    </AssociationSet>
+    <AssociationSet Name="FK_td_reference_tm_reference" Association="TEMS1Model.FK_td_reference_tm_reference">
+      <End Role="tm_reference" EntitySet="tm_reference" />
+      <End Role="td_reference" EntitySet="td_reference" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="td_cal">
+    <Key>
+      <PropertyRef Name="round" />
+      <PropertyRef Name="item_code" />
+    </Key>
+    <Property Name="round" Type="Int32" Nullable="false" />
+    <Property Name="item_code" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="need" Type="Int32" Nullable="false" />
+    <Property Name="circulate" Type="Int32" Nullable="false" />
+    <Property Name="spare" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="td_cal_round" Relationship="TEMS1Model.FK_td_cal_td_cal_round" FromRole="td_cal" ToRole="td_cal_round" />
+  </EntityType>
+  <EntityType Name="td_cal_round">
+    <Key>
+      <PropertyRef Name="round" />
+    </Key>
+    <Property Name="round" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="entry_dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="td_cal" Relationship="TEMS1Model.FK_td_cal_td_cal_round" FromRole="td_cal_round" ToRole="td_cal" />
+  </EntityType>
+  <EntityType Name="td_mold">
+    <Key>
+      <PropertyRef Name="mold_code" />
+      <PropertyRef Name="mold_no" />
+    </Key>
+    <Property Name="mold_code" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="mold_no" Type="Double" Nullable="false" />
+    <Property Name="item_code" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="status_id" Type="Int32" Nullable="false" />
+    <Property Name="location_id" Type="Byte" Nullable="false" />
+    <Property Name="cav_per_unit" Type="Int32" Nullable="false" />
+    <Property Name="unit_id" Type="Byte" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tm_item" Relationship="TEMS1Model.FK_td_mold_tm_item" FromRole="td_mold" ToRole="tm_item" />
+    <NavigationProperty Name="tm_location" Relationship="TEMS1Model.FK_td_mold_tm_location" FromRole="td_mold" ToRole="tm_location" />
+    <NavigationProperty Name="tm_status" Relationship="TEMS1Model.FK_td_mold_tm_status" FromRole="td_mold" ToRole="tm_status" />
+    <NavigationProperty Name="tm_unit" Relationship="TEMS1Model.FK_td_mold_tm_unit" FromRole="td_mold" ToRole="tm_unit" />
+    <NavigationProperty Name="td_tran" Relationship="TEMS1Model.FK_td_tran_td_mold" FromRole="td_mold" ToRole="td_tran" />
+    <NavigationProperty Name="td_reference" Relationship="TEMS1Model.FK_td_reference_td_mold" FromRole="td_mold" ToRole="td_reference" />
+  </EntityType>
+  <EntityType Name="td_param">
+    <Key>
+      <PropertyRef Name="item_code" />
+      <PropertyRef Name="param_id" />
+    </Key>
+    <Property Name="item_code" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="param_id" Type="Byte" Nullable="false" />
+    <Property Name="value" Type="Double" Nullable="false" />
+    <Property Name="update_user" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="update_dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tm_item" Relationship="TEMS1Model.FK_td_param_tm_item" FromRole="td_param" ToRole="tm_item" />
+    <NavigationProperty Name="tm_param" Relationship="TEMS1Model.FK_td_param_tm_param" FromRole="td_param" ToRole="tm_param" />
+  </EntityType>
+  <EntityType Name="td_tran">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="mold_code" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="mold_no" Type="Double" Nullable="false" />
+    <Property Name="round" Type="Int32" />
+    <Property Name="ulv_id" Type="Byte" />
+    <Property Name="org_id" Type="Int32" />
+    <Property Name="act_id" Type="Byte" />
+    <Property Name="actor" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="act_dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="judge_id" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="job_no" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="wc" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="machine" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="shot" Type="Int32" />
+    <Property Name="status" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="prob_id" Type="Byte" />
+    <NavigationProperty Name="td_mold" Relationship="TEMS1Model.FK_td_tran_td_mold" FromRole="td_tran" ToRole="td_mold" />
+    <NavigationProperty Name="tm_action" Relationship="TEMS1Model.FK_td_tran_tm_action" FromRole="td_tran" ToRole="tm_action" />
+    <NavigationProperty Name="tm_judgement" Relationship="TEMS1Model.FK_td_tran_tm_judgement" FromRole="td_tran" ToRole="tm_judgement" />
+    <NavigationProperty Name="tm_problem" Relationship="TEMS1Model.FK_td_tran_tm_problem" FromRole="td_tran" ToRole="tm_problem" />
+    <NavigationProperty Name="tm_ulv" Relationship="TEMS1Model.FK_td_tran_tm_ulv" FromRole="td_tran" ToRole="tm_ulv" />
+  </EntityType>
+  <EntityType Name="tm_action">
+    <Key>
+      <PropertyRef Name="act_id" />
+    </Key>
+    <Property Name="act_id" Type="Byte" Nullable="false" />
+    <Property Name="act_name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="update_user" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="update_dt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="td_tran" Relationship="TEMS1Model.FK_td_tran_tm_action" FromRole="tm_action" ToRole="td_tran" />
+  </EntityType>
+  <EntityType Name="tm_customer">
+    <Key>
+      <PropertyRef Name="cust_id" />
+    </Key>
+    <Property Name="cust_id" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="cust_name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="update_user" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="update_dt" Type="DateTime" Precision="3" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tm_item" Relationship="TEMS1Model.FK_tm_item_tm_customer" FromRole="tm_customer" ToRole="tm_item" />
+  </EntityType>
+  <EntityType Name="tm_group">
+    <Key>
+      <PropertyRef Name="group_id" />
+    </Key>
+    <Property Name="group_id" Type="Int32" Nullable="false" />
+    <Property Name="gtype_id" Type="Byte" Nullable="false" />
+    <Property Name="update_user" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="update_dt" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="tm_gtype" Relationship="TEMS1Model.FK_tm_group_tm_gtype" FromRole="tm_group" ToRole="tm_gtype" />
+  </EntityType>
+  <EntityType Name="tm_gtype">
+    <Key>
+      <PropertyRef Name="gtype_id" />
+    </Key>
+    <Property Name="gtype_id" Type="Byte" Nullable="false" />
+    <Property Name="gtype_name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="update_user" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="update_dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tm_group" Relationship="TEMS1Model.FK_tm_group_tm_gtype" FromRole="tm_gtype" ToRole="tm_group" />
+  </EntityType>
+  <EntityType Name="tm_item">
+    <Key>
+      <PropertyRef Name="item_code" />
+    </Key>
+    <Property Name="item_code" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="cust_id" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="wc_id" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="update_user" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="update_dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="td_mold" Relationship="TEMS1Model.FK_td_mold_tm_item" FromRole="tm_item" ToRole="td_mold" />
+    <NavigationProperty Name="td_param" Relationship="TEMS1Model.FK_td_param_tm_item" FromRole="tm_item" ToRole="td_param" />
+    <NavigationProperty Name="tm_customer" Relationship="TEMS1Model.FK_tm_item_tm_customer" FromRole="tm_item" ToRole="tm_customer" />
+    <NavigationProperty Name="tm_wc" Relationship="TEMS1Model.FK_tm_item_tm_wc" FromRole="tm_item" ToRole="tm_wc" />
+    <NavigationProperty Name="tt_mplan" Relationship="TEMS1Model.FK_tt_mplan_tm_item" FromRole="tm_item" ToRole="tt_mplan" />
+  </EntityType>
+  <EntityType Name="tm_judgement">
+    <Key>
+      <PropertyRef Name="judge_id" />
+    </Key>
+    <Property Name="judge_id" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="judge_name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="update_user" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="update_dt" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="td_tran" Relationship="TEMS1Model.FK_td_tran_tm_judgement" FromRole="tm_judgement" ToRole="td_tran" />
+  </EntityType>
+  <EntityType Name="tm_location">
+    <Key>
+      <PropertyRef Name="location_id" />
+    </Key>
+    <Property Name="location_id" Type="Byte" Nullable="false" />
+    <Property Name="location_name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="update_user" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="update_dt" Type="DateTime" Precision="3" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="td_mold" Relationship="TEMS1Model.FK_td_mold_tm_location" FromRole="tm_location" ToRole="td_mold" />
+  </EntityType>
+  <EntityType Name="tm_mold">
+    <Key>
+      <PropertyRef Name="mold_code" />
+    </Key>
+    <Property Name="mold_code" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="entry_user" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="entry_dt" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tm_param">
+    <Key>
+      <PropertyRef Name="param_id" />
+    </Key>
+    <Property Name="param_id" Type="Byte" Nullable="false" />
+    <Property Name="param_name" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="update_user" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="update_dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="td_param" Relationship="TEMS1Model.FK_td_param_tm_param" FromRole="tm_param" ToRole="td_param" />
+  </EntityType>
+  <EntityType Name="tm_plant">
+    <Key>
+      <PropertyRef Name="plant_id" />
+    </Key>
+    <Property Name="plant_id" Type="Byte" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="plant_name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="update_user" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="update_dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tm_product" Relationship="TEMS1Model.FK_tm_prod_tm_plant" FromRole="tm_plant" ToRole="tm_product" />
+  </EntityType>
+  <EntityType Name="tm_problem">
+    <Key>
+      <PropertyRef Name="prob_id" />
+    </Key>
+    <Property Name="prob_id" Type="Byte" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="prob_name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="update_user" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="update_dt" Type="DateTime" Precision="3" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="td_tran" Relationship="TEMS1Model.FK_td_tran_tm_problem" FromRole="tm_problem" ToRole="td_tran" />
+    <NavigationProperty Name="td_reference" Relationship="TEMS1Model.FK_td_reference_tm_problem" FromRole="tm_problem" ToRole="td_reference" />
+  </EntityType>
+  <EntityType Name="tm_product">
+    <Key>
+      <PropertyRef Name="prod_id" />
+    </Key>
+    <Property Name="prod_id" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="prod_name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="plant_id" Type="Byte" Nullable="false" />
+    <Property Name="update_user" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="update_dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tm_plant" Relationship="TEMS1Model.FK_tm_prod_tm_plant" FromRole="tm_product" ToRole="tm_plant" />
+    <NavigationProperty Name="tm_wc" Relationship="TEMS1Model.FK_tm_wc_tm_prod" FromRole="tm_product" ToRole="tm_wc" />
+  </EntityType>
+  <EntityType Name="tm_reference">
+    <Key>
+      <PropertyRef Name="ref_id" />
+    </Key>
+    <Property Name="ref_id" Type="Byte" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ref_name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="update_user" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="update_dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="td_reference" Relationship="TEMS1Model.FK_td_reference_tm_reference" FromRole="tm_reference" ToRole="td_reference" />
+  </EntityType>
+  <EntityType Name="tm_status">
+    <Key>
+      <PropertyRef Name="status_id" />
+    </Key>
+    <Property Name="status_id" Type="Int32" Nullable="false" />
+    <Property Name="status_name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="update_user" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="update_dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="td_mold" Relationship="TEMS1Model.FK_td_mold_tm_status" FromRole="tm_status" ToRole="td_mold" />
+  </EntityType>
+  <EntityType Name="tm_ulv">
+    <Key>
+      <PropertyRef Name="ulv_id" />
+    </Key>
+    <Property Name="ulv_id" Type="Byte" Nullable="false" />
+    <Property Name="ulv_name" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="update_user" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="update_dt" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="td_tran" Relationship="TEMS1Model.FK_td_tran_tm_ulv" FromRole="tm_ulv" ToRole="td_tran" />
+  </EntityType>
+  <EntityType Name="tm_unit">
+    <Key>
+      <PropertyRef Name="unit_id" />
+    </Key>
+    <Property Name="unit_id" Type="Byte" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="unit_name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="update_user" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="update_dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="td_mold" Relationship="TEMS1Model.FK_td_mold_tm_unit" FromRole="tm_unit" ToRole="td_mold" />
+  </EntityType>
+  <EntityType Name="tm_user">
+    <Key>
+      <PropertyRef Name="emp_code" />
+    </Key>
+    <Property Name="emp_code" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="utype_id" Type="Byte" Nullable="false" />
+    <Property Name="update_user" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="update_dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tm_utype" Relationship="TEMS1Model.FK_tm_user_tm_utype" FromRole="tm_user" ToRole="tm_utype" />
+  </EntityType>
+  <EntityType Name="tm_utype">
+    <Key>
+      <PropertyRef Name="utype_id" />
+    </Key>
+    <Property Name="utype_id" Type="Byte" Nullable="false" />
+    <Property Name="utype_name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="update_user" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="update_dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tm_user" Relationship="TEMS1Model.FK_tm_user_tm_utype" FromRole="tm_utype" ToRole="tm_user" />
+  </EntityType>
+  <EntityType Name="tm_wc">
+    <Key>
+      <PropertyRef Name="wc_id" />
+    </Key>
+    <Property Name="wc_id" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="wc_name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="prod_id" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="update_user" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="update_dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tm_item" Relationship="TEMS1Model.FK_tm_item_tm_wc" FromRole="tm_wc" ToRole="tm_item" />
+    <NavigationProperty Name="tm_product" Relationship="TEMS1Model.FK_tm_wc_tm_prod" FromRole="tm_wc" ToRole="tm_product" />
+  </EntityType>
+  <EntityType Name="tt_mplan">
+    <Key>
+      <PropertyRef Name="item_code" />
+      <PropertyRef Name="yy" />
+      <PropertyRef Name="mm" />
+    </Key>
+    <Property Name="item_code" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="yy" Type="Int32" Nullable="false" />
+    <Property Name="mm" Type="Int32" Nullable="false" />
+    <Property Name="value" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tm_item" Relationship="TEMS1Model.FK_tt_mplan_tm_item" FromRole="tt_mplan" ToRole="tm_item" />
+  </EntityType>
+  <EntityType Name="v_mold_status">
+    <Key>
+      <PropertyRef Name="plant_id" />
+      <PropertyRef Name="plant_name" />
+      <PropertyRef Name="prod_id" />
+      <PropertyRef Name="prod_name" />
+      <PropertyRef Name="wc_id" />
+      <PropertyRef Name="wc_name" />
+      <PropertyRef Name="item_code" />
+      <PropertyRef Name="need" />
+      <PropertyRef Name="circulate" />
+      <PropertyRef Name="spare" />
+    </Key>
+    <Property Name="plant_id" Type="Byte" Nullable="false" />
+    <Property Name="plant_name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="prod_id" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="prod_name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="wc_id" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="wc_name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="item_code" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="OK_Mold" Type="Int32" />
+    <Property Name="OK_Prod" Type="Int32" />
+    <Property Name="NG_Mold" Type="Int32" />
+    <Property Name="NG_Prod" Type="Int32" />
+    <Property Name="NG_TnD" Type="Int32" />
+    <Property Name="NG_Nok" Type="Int32" />
+    <Property Name="Total" Type="Int32" />
+    <Property Name="need" Type="Int32" Nullable="false" />
+    <Property Name="circulate" Type="Int32" Nullable="false" />
+    <Property Name="spare" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_td_cal_td_cal_round">
+    <End Role="td_cal_round" Type="TEMS1Model.td_cal_round" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="td_cal" Type="TEMS1Model.td_cal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="td_cal_round">
+        <PropertyRef Name="round" />
+      </Principal>
+      <Dependent Role="td_cal">
+        <PropertyRef Name="round" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_mold_tm_item">
+    <End Role="tm_item" Type="TEMS1Model.tm_item" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="td_mold" Type="TEMS1Model.td_mold" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_item">
+        <PropertyRef Name="item_code" />
+      </Principal>
+      <Dependent Role="td_mold">
+        <PropertyRef Name="item_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_mold_tm_location">
+    <End Role="tm_location" Type="TEMS1Model.tm_location" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="td_mold" Type="TEMS1Model.td_mold" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_location">
+        <PropertyRef Name="location_id" />
+      </Principal>
+      <Dependent Role="td_mold">
+        <PropertyRef Name="location_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_mold_tm_status">
+    <End Role="tm_status" Type="TEMS1Model.tm_status" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="td_mold" Type="TEMS1Model.td_mold" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_status">
+        <PropertyRef Name="status_id" />
+      </Principal>
+      <Dependent Role="td_mold">
+        <PropertyRef Name="status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_mold_tm_unit">
+    <End Role="tm_unit" Type="TEMS1Model.tm_unit" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="td_mold" Type="TEMS1Model.td_mold" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_unit">
+        <PropertyRef Name="unit_id" />
+      </Principal>
+      <Dependent Role="td_mold">
+        <PropertyRef Name="unit_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_tran_td_mold">
+    <End Role="td_mold" Type="TEMS1Model.td_mold" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="td_tran" Type="TEMS1Model.td_tran" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="td_mold">
+        <PropertyRef Name="mold_code" />
+        <PropertyRef Name="mold_no" />
+      </Principal>
+      <Dependent Role="td_tran">
+        <PropertyRef Name="mold_code" />
+        <PropertyRef Name="mold_no" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_param_tm_item">
+    <End Role="tm_item" Type="TEMS1Model.tm_item" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="td_param" Type="TEMS1Model.td_param" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_item">
+        <PropertyRef Name="item_code" />
+      </Principal>
+      <Dependent Role="td_param">
+        <PropertyRef Name="item_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_param_tm_param">
+    <End Role="tm_param" Type="TEMS1Model.tm_param" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="td_param" Type="TEMS1Model.td_param" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_param">
+        <PropertyRef Name="param_id" />
+      </Principal>
+      <Dependent Role="td_param">
+        <PropertyRef Name="param_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_tran_tm_action">
+    <End Role="tm_action" Type="TEMS1Model.tm_action" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="td_tran" Type="TEMS1Model.td_tran" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_action">
+        <PropertyRef Name="act_id" />
+      </Principal>
+      <Dependent Role="td_tran">
+        <PropertyRef Name="act_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_tran_tm_judgement">
+    <End Role="tm_judgement" Type="TEMS1Model.tm_judgement" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="td_tran" Type="TEMS1Model.td_tran" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_judgement">
+        <PropertyRef Name="judge_id" />
+      </Principal>
+      <Dependent Role="td_tran">
+        <PropertyRef Name="judge_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_tran_tm_problem">
+    <End Role="tm_problem" Type="TEMS1Model.tm_problem" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="td_tran" Type="TEMS1Model.td_tran" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_problem">
+        <PropertyRef Name="prob_id" />
+      </Principal>
+      <Dependent Role="td_tran">
+        <PropertyRef Name="prob_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_tran_tm_ulv">
+    <End Role="tm_ulv" Type="TEMS1Model.tm_ulv" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="td_tran" Type="TEMS1Model.td_tran" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_ulv">
+        <PropertyRef Name="ulv_id" />
+      </Principal>
+      <Dependent Role="td_tran">
+        <PropertyRef Name="ulv_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tm_item_tm_customer">
+    <End Role="tm_customer" Type="TEMS1Model.tm_customer" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tm_item" Type="TEMS1Model.tm_item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_customer">
+        <PropertyRef Name="cust_id" />
+      </Principal>
+      <Dependent Role="tm_item">
+        <PropertyRef Name="cust_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tm_group_tm_gtype">
+    <End Role="tm_gtype" Type="TEMS1Model.tm_gtype" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tm_group" Type="TEMS1Model.tm_group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_gtype">
+        <PropertyRef Name="gtype_id" />
+      </Principal>
+      <Dependent Role="tm_group">
+        <PropertyRef Name="gtype_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tm_item_tm_wc">
+    <End Role="tm_wc" Type="TEMS1Model.tm_wc" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tm_item" Type="TEMS1Model.tm_item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_wc">
+        <PropertyRef Name="wc_id" />
+      </Principal>
+      <Dependent Role="tm_item">
+        <PropertyRef Name="wc_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tt_mplan_tm_item">
+    <End Role="tm_item" Type="TEMS1Model.tm_item" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tt_mplan" Type="TEMS1Model.tt_mplan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_item">
+        <PropertyRef Name="item_code" />
+      </Principal>
+      <Dependent Role="tt_mplan">
+        <PropertyRef Name="item_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tm_prod_tm_plant">
+    <End Role="tm_plant" Type="TEMS1Model.tm_plant" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tm_product" Type="TEMS1Model.tm_product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_plant">
+        <PropertyRef Name="plant_id" />
+      </Principal>
+      <Dependent Role="tm_product">
+        <PropertyRef Name="plant_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tm_wc_tm_prod">
+    <End Role="tm_product" Type="TEMS1Model.tm_product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tm_wc" Type="TEMS1Model.tm_wc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_product">
+        <PropertyRef Name="prod_id" />
+      </Principal>
+      <Dependent Role="tm_wc">
+        <PropertyRef Name="prod_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tm_user_tm_utype">
+    <End Role="tm_utype" Type="TEMS1Model.tm_utype" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tm_user" Type="TEMS1Model.tm_user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_utype">
+        <PropertyRef Name="utype_id" />
+      </Principal>
+      <Dependent Role="tm_user">
+        <PropertyRef Name="utype_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="v_ref">
+    <Key>
+      <PropertyRef Name="mold_code" />
+      <PropertyRef Name="mold_no" />
+      <PropertyRef Name="ref_name" />
+      <PropertyRef Name="ref_no" />
+      <PropertyRef Name="prob_name" />
+      <PropertyRef Name="entry_dt" />
+      <PropertyRef Name="active" />
+    </Key>
+    <Property Type="String" Name="mold_code" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="Double" Name="mold_no" Nullable="false" />
+    <Property Type="String" Name="ref_name" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ref_no" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="prob_name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="entry_dt" Nullable="false" Precision="3" />
+    <Property Type="Boolean" Name="active" Nullable="false" />
+  </EntityType>
+  <EntityType Name="td_reference">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="mold_code" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="Double" Name="mold_no" Nullable="false" />
+    <Property Type="Byte" Name="ref_id" Nullable="false" />
+    <Property Type="String" Name="ref_no" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="active" Nullable="false" />
+    <Property Type="Byte" Name="prob_id" />
+    <Property Type="DateTime" Name="entry_dt" Nullable="false" Precision="3" />
+    <Property Type="String" Name="entry_user" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="td_mold" Relationship="TEMS1Model.FK_td_reference_td_mold" FromRole="td_reference" ToRole="td_mold" />
+    <NavigationProperty Name="tm_problem" Relationship="TEMS1Model.FK_td_reference_tm_problem" FromRole="td_reference" ToRole="tm_problem" />
+    <NavigationProperty Name="tm_reference" Relationship="TEMS1Model.FK_td_reference_tm_reference" FromRole="td_reference" ToRole="tm_reference" />
+  </EntityType>
+  <Association Name="FK_td_reference_td_mold">
+    <End Type="TEMS1Model.td_mold" Role="td_mold" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TEMS1Model.td_reference" Role="td_reference" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="td_mold">
+        <PropertyRef Name="mold_code" />
+        <PropertyRef Name="mold_no" />
+      </Principal>
+      <Dependent Role="td_reference">
+        <PropertyRef Name="mold_code" />
+        <PropertyRef Name="mold_no" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_reference_tm_problem">
+    <End Type="TEMS1Model.tm_problem" Role="tm_problem" Multiplicity="0..1" />
+    <End Type="TEMS1Model.td_reference" Role="td_reference" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_problem">
+        <PropertyRef Name="prob_id" />
+      </Principal>
+      <Dependent Role="td_reference">
+        <PropertyRef Name="prob_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_td_reference_tm_reference">
+    <End Type="TEMS1Model.tm_reference" Role="tm_reference" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TEMS1Model.td_reference" Role="td_reference" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tm_reference">
+        <PropertyRef Name="ref_id" />
+      </Principal>
+      <Dependent Role="td_reference">
+        <PropertyRef Name="ref_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

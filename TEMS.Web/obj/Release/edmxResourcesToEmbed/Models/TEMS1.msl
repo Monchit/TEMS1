@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TEMS1ModelStoreContainer" CdmEntityContainer="TEMS1Entities">
+    <EntitySetMapping Name="td_cal">
+      <EntityTypeMapping TypeName="TEMS1Model.td_cal">
+        <MappingFragment StoreEntitySet="td_cal">
+          <ScalarProperty Name="round" ColumnName="round" />
+          <ScalarProperty Name="item_code" ColumnName="item_code" />
+          <ScalarProperty Name="need" ColumnName="need" />
+          <ScalarProperty Name="circulate" ColumnName="circulate" />
+          <ScalarProperty Name="spare" ColumnName="spare" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="td_cal_round">
+      <EntityTypeMapping TypeName="TEMS1Model.td_cal_round">
+        <MappingFragment StoreEntitySet="td_cal_round">
+          <ScalarProperty Name="round" ColumnName="round" />
+          <ScalarProperty Name="entry_dt" ColumnName="entry_dt" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="td_mold">
+      <EntityTypeMapping TypeName="TEMS1Model.td_mold">
+        <MappingFragment StoreEntitySet="td_mold">
+          <ScalarProperty Name="mold_code" ColumnName="mold_code" />
+          <ScalarProperty Name="mold_no" ColumnName="mold_no" />
+          <ScalarProperty Name="item_code" ColumnName="item_code" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="location_id" ColumnName="location_id" />
+          <ScalarProperty Name="cav_per_unit" ColumnName="cav_per_unit" />
+          <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="td_param">
+      <EntityTypeMapping TypeName="TEMS1Model.td_param">
+        <MappingFragment StoreEntitySet="td_param">
+          <ScalarProperty Name="item_code" ColumnName="item_code" />
+          <ScalarProperty Name="param_id" ColumnName="param_id" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="update_user" ColumnName="update_user" />
+          <ScalarProperty Name="update_dt" ColumnName="update_dt" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="td_reference">
+      <EntityTypeMapping TypeName="TEMS1Model.td_reference">
+        <MappingFragment StoreEntitySet="td_reference">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="mold_code" ColumnName="mold_code" />
+          <ScalarProperty Name="mold_no" ColumnName="mold_no" />
+          <ScalarProperty Name="ref_id" ColumnName="ref_id" />
+          <ScalarProperty Name="ref_no" ColumnName="ref_no" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="prob_id" ColumnName="prob_id" />
+          <ScalarProperty Name="entry_dt" ColumnName="entry_dt" />
+          <ScalarProperty Name="entry_user" ColumnName="entry_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="td_tran">
+      <EntityTypeMapping TypeName="TEMS1Model.td_tran">
+        <MappingFragment StoreEntitySet="td_tran">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="mold_code" ColumnName="mold_code" />
+          <ScalarProperty Name="mold_no" ColumnName="mold_no" />
+          <ScalarProperty Name="round" ColumnName="round" />
+          <ScalarProperty Name="ulv_id" ColumnName="ulv_id" />
+          <ScalarProperty Name="org_id" ColumnName="org_id" />
+          <ScalarProperty Name="act_id" ColumnName="act_id" />
+          <ScalarProperty Name="actor" ColumnName="actor" />
+          <ScalarProperty Name="act_dt" ColumnName="act_dt" />
+          <ScalarProperty Name="judge_id" ColumnName="judge_id" />
+          <ScalarProperty Name="job_no" ColumnName="job_no" />
+          <ScalarProperty Name="wc" ColumnName="wc" />
+          <ScalarProperty Name="machine" ColumnName="machine" />
+          <ScalarProperty Name="shot" ColumnName="shot" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="prob_id" ColumnName="prob_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tm_action">
+      <EntityTypeMapping TypeName="TEMS1Model.tm_action">
+        <MappingFragment StoreEntitySet="tm_action">
+          <ScalarProperty Name="act_id" ColumnName="act_id" />
+          <ScalarProperty Name="act_name" ColumnName="act_name" />
+          <ScalarProperty Name="update_user" ColumnName="update_user" />
+          <ScalarProperty Name="update_dt" ColumnName="update_dt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tm_customer">
+      <EntityTypeMapping TypeName="TEMS1Model.tm_customer">
+        <MappingFragment StoreEntitySet="tm_customer">
+          <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+          <ScalarProperty Name="cust_name" ColumnName="cust_name" />
+          <ScalarProperty Name="update_user" ColumnName="update_user" />
+          <ScalarProperty Name="update_dt" ColumnName="update_dt" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tm_group">
+      <EntityTypeMapping TypeName="TEMS1Model.tm_group">
+        <MappingFragment StoreEntitySet="tm_group">
+          <ScalarProperty Name="group_id" ColumnName="group_id" />
+          <ScalarProperty Name="gtype_id" ColumnName="gtype_id" />
+          <ScalarProperty Name="update_user" ColumnName="update_user" />
+          <ScalarProperty Name="update_dt" ColumnName="update_dt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tm_gtype">
+      <EntityTypeMapping TypeName="TEMS1Model.tm_gtype">
+        <MappingFragment StoreEntitySet="tm_gtype">
+          <ScalarProperty Name="gtype_id" ColumnName="gtype_id" />
+          <ScalarProperty Name="gtype_name" ColumnName="gtype_name" />
+          <ScalarProperty Name="update_user" ColumnName="update_user" />
+          <ScalarProperty Name="update_dt" ColumnName="update_dt" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tm_item">
+      <EntityTypeMapping TypeName="TEMS1Model.tm_item">
+        <MappingFragment StoreEntitySet="tm_item">
+          <ScalarProperty Name="item_code" ColumnName="item_code" />
+          <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+          <ScalarProperty Name="wc_id" ColumnName="wc_id" />
+          <ScalarProperty Name="update_user" ColumnName="update_user" />
+          <ScalarProperty Name="update_dt" ColumnName="update_dt" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tm_judgement">
+      <EntityTypeMapping TypeName="TEMS1Model.tm_judgement">
+        <MappingFragment StoreEntitySet="tm_judgement">
+          <ScalarProperty Name="judge_id" ColumnName="judge_id" />
+          <ScalarProperty Name="judge_name" ColumnName="judge_name" />
+          <ScalarProperty Name="update_user" ColumnName="update_user" />
+          <ScalarProperty Name="update_dt" ColumnName="update_dt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tm_location">
+      <EntityTypeMapping TypeName="TEMS1Model.tm_location">
+        <MappingFragment StoreEntitySet="tm_location">
+          <ScalarProperty Name="location_id" ColumnName="location_id" />
+          <ScalarProperty Name="location_name" ColumnName="location_name" />
+          <ScalarProperty Name="update_user" ColumnName="update_user" />
+          <ScalarProperty Name="update_dt" ColumnName="update_dt" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tm_mold">
+      <EntityTypeMapping TypeName="TEMS1Model.tm_mold">
+        <MappingFragment StoreEntitySet="tm_mold">
+          <ScalarProperty Name="mold_code" ColumnName="mold_code" />
+          <ScalarProperty Name="entry_user" ColumnName="entry_user" />
+          <ScalarProperty Name="entry_dt" ColumnName="entry_dt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tm_param">
+      <EntityTypeMapping TypeName="TEMS1Model.tm_param">
+        <MappingFragment StoreEntitySet="tm_param">
+          <ScalarProperty Name="param_id" ColumnName="param_id" />
+          <ScalarProperty Name="param_name" ColumnName="param_name" />
+          <ScalarProperty Name="update_user" ColumnName="update_user" />
+          <ScalarProperty Name="update_dt" ColumnName="update_dt" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tm_plant">
+      <EntityTypeMapping TypeName="TEMS1Model.tm_plant">
+        <MappingFragment StoreEntitySet="tm_plant">
+          <ScalarProperty Name="plant_id" ColumnName="plant_id" />
+          <ScalarProperty Name="plant_name" ColumnName="plant_name" />
+          <ScalarProperty Name="update_user" ColumnName="update_user" />
+          <ScalarProperty Name="update_dt" ColumnName="update_dt" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tm_problem">
+      <EntityTypeMapping TypeName="TEMS1Model.tm_problem">
+        <MappingFragment StoreEntitySet="tm_problem">
+          <ScalarProperty Name="prob_id" ColumnName="prob_id" />
+          <ScalarProperty Name="prob_name" ColumnName="prob_name" />
+          <ScalarProperty Name="update_user" ColumnName="update_user" />
+          <ScalarProperty Name="update_dt" ColumnName="update_dt" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tm_product">
+      <EntityTypeMapping TypeName="TEMS1Model.tm_product">
+        <MappingFragment StoreEntitySet="tm_product">
+          <ScalarProperty Name="prod_id" ColumnName="prod_id" />
+          <ScalarProperty Name="prod_name" ColumnName="prod_name" />
+          <ScalarProperty Name="plant_id" ColumnName="plant_id" />
+          <ScalarProperty Name="update_user" ColumnName="update_user" />
+          <ScalarProperty Name="update_dt" ColumnName="update_dt" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tm_reference">
+      <EntityTypeMapping TypeName="TEMS1Model.tm_reference">
+        <MappingFragment StoreEntitySet="tm_reference">
+          <ScalarProperty Name="ref_id" ColumnName="ref_id" />
+          <ScalarProperty Name="ref_name" ColumnName="ref_name" />
+          <ScalarProperty Name="update_user" ColumnName="update_user" />
+          <ScalarProperty Name="update_dt" ColumnName="update_dt" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tm_status">
+      <EntityTypeMapping TypeName="TEMS1Model.tm_status">
+        <MappingFragment StoreEntitySet="tm_status">
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="status_name" ColumnName="status_name" />
+          <ScalarProperty Name="update_user" ColumnName="update_user" />
+          <ScalarProperty Name="update_dt" ColumnName="update_dt" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tm_ulv">
+      <EntityTypeMapping TypeName="TEMS1Model.tm_ulv">
+        <MappingFragment StoreEntitySet="tm_ulv">
+          <ScalarProperty Name="ulv_id" ColumnName="ulv_id" />
+          <ScalarProperty Name="ulv_name" ColumnName="ulv_name" />
+          <ScalarProperty Name="update_user" ColumnName="update_user" />
+          <ScalarProperty Name="update_dt" ColumnName="update_dt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tm_unit">
+      <EntityTypeMapping TypeName="TEMS1Model.tm_unit">
+        <MappingFragment StoreEntitySet="tm_unit">
+          <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+          <ScalarProperty Name="unit_name" ColumnName="unit_name" />
+          <ScalarProperty Name="update_user" ColumnName="update_user" />
+          <ScalarProperty Name="update_dt" ColumnName="update_dt" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tm_user">
+      <EntityTypeMapping TypeName="TEMS1Model.tm_user">
+        <MappingFragment StoreEntitySet="tm_user">
+          <ScalarProperty Name="emp_code" ColumnName="emp_code" />
+          <ScalarProperty Name="utype_id" ColumnName="utype_id" />
+          <ScalarProperty Name="update_user" ColumnName="update_user" />
+          <ScalarProperty Name="update_dt" ColumnName="update_dt" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tm_utype">
+      <EntityTypeMapping TypeName="TEMS1Model.tm_utype">
+        <MappingFragment StoreEntitySet="tm_utype">
+          <ScalarProperty Name="utype_id" ColumnName="utype_id" />
+          <ScalarProperty Name="utype_name" ColumnName="utype_name" />
+          <ScalarProperty Name="update_user" ColumnName="update_user" />
+          <ScalarProperty Name="update_dt" ColumnName="update_dt" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tm_wc">
+      <EntityTypeMapping TypeName="TEMS1Model.tm_wc">
+        <MappingFragment StoreEntitySet="tm_wc">
+          <ScalarProperty Name="wc_id" ColumnName="wc_id" />
+          <ScalarProperty Name="wc_name" ColumnName="wc_name" />
+          <ScalarProperty Name="prod_id" ColumnName="prod_id" />
+          <ScalarProperty Name="update_user" ColumnName="update_user" />
+          <ScalarProperty Name="update_dt" ColumnName="update_dt" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tt_mplan">
+      <EntityTypeMapping TypeName="TEMS1Model.tt_mplan">
+        <MappingFragment StoreEntitySet="tt_mplan">
+          <ScalarProperty Name="item_code" ColumnName="item_code" />
+          <ScalarProperty Name="yy" ColumnName="yy" />
+          <ScalarProperty Name="mm" ColumnName="mm" />
+          <ScalarProperty Name="value" ColumnName="value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_mold_status">
+      <EntityTypeMapping TypeName="TEMS1Model.v_mold_status">
+        <MappingFragment StoreEntitySet="v_mold_status">
+          <ScalarProperty Name="plant_id" ColumnName="plant_id" />
+          <ScalarProperty Name="plant_name" ColumnName="plant_name" />
+          <ScalarProperty Name="prod_id" ColumnName="prod_id" />
+          <ScalarProperty Name="prod_name" ColumnName="prod_name" />
+          <ScalarProperty Name="wc_id" ColumnName="wc_id" />
+          <ScalarProperty Name="wc_name" ColumnName="wc_name" />
+          <ScalarProperty Name="item_code" ColumnName="item_code" />
+          <ScalarProperty Name="OK_Mold" ColumnName="OK_Mold" />
+          <ScalarProperty Name="OK_Prod" ColumnName="OK_Prod" />
+          <ScalarProperty Name="NG_Mold" ColumnName="NG_Mold" />
+          <ScalarProperty Name="NG_Prod" ColumnName="NG_Prod" />
+          <ScalarProperty Name="NG_TnD" ColumnName="NG_TnD" />
+          <ScalarProperty Name="NG_Nok" ColumnName="NG_Nok" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="need" ColumnName="need" />
+          <ScalarProperty Name="circulate" ColumnName="circulate" />
+          <ScalarProperty Name="spare" ColumnName="spare" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
